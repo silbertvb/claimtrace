@@ -216,3 +216,11 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+
+# ClaimTrace - específico del proyecto
+docker-compose.override.yml
+data/vectorstore/
+data/contratos_generados/
+n8n_data/
+*.sqlite
