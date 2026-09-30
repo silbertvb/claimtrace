@@ -11,7 +11,7 @@ Python · LangChain · LangGraph · Docker · n8n · vector DB (por definir en e
 
 ## Estado
 - [x] Bloque 1: Caso de negocio
-- [ ] Bloque 2: Scaffolding Docker
+- [x] Bloque 2: Scaffolding Docker
 - [ ] Bloque 3: Datos de prueba
 - [ ] Bloque 4: RAG de políticas y condiciones generales
 - [ ] Bloque 5: Agente de triage
