@@ -7,7 +7,7 @@ Agente de IA agentic para el triage de reclamaciones de una aseguradora ficticia
 > Todos los datos del proyecto (clientes, pólizas y reclamaciones) son ficticios.
 
 ## Stack
-Python · LangChain · LangGraph · Docker · n8n · vector DB (por definir en el Bloque 2)
+Python · LangChain · LangGraph · Docker · n8n · Postgres + pgvector
 
 ## Estado
 - [x] Bloque 1: Caso de negocio
