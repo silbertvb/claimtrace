@@ -32,9 +32,10 @@ fragmentos, decisión y registro de auditoría en una única base transaccional.
   cita consultada y la decisión se cruzan con un `JOIN`; un servicio menos en
   el compose.
 - **Negativas / riesgos:** menor rendimiento vectorial que una base dedicada a
-  gran escala; el carácter solo-añadir del registro se refuerza con permisos y
-  triggers, pero un superusuario de la base podría saltárselo (se tratará en
-  el ADR-005).
+  gran escala; el carácter solo-añadir del registro se reforzará con permisos
+  y triggers (Bloque 6, ADR-005). Hasta entonces la API se conecta con el
+  superusuario de la base, así que no está protegido, y aun después un
+  superusuario podría saltárselo.
 - **Cuándo se revisaría:** si el corpus creciera a millones de fragmentos o
   hiciera falta filtrado vectorial avanzado, se valoraría Qdrant. La
   recuperación quedará aislada en una función para facilitar ese cambio.
