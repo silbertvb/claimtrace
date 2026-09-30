@@ -1,0 +1,50 @@
+# ClaimTrace - stack base.
+# Las variables ${...} se leen del archivo .env (ver .env.example).
+
+services:
+  # db: Postgres con la extensión pgvector. Guarda los vectores de las
+  # políticas y el registro de auditoría en una sola base (ver ADR-001).
+  db:
+    image: pgvector/pgvector:pg16
+    container_name: claimtrace-db
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      # Solo accesible desde tu máquina (127.0.0.1), no desde la red.
+      # Izquierda: puerto de tu PC. Derecha: puerto del contenedor (fijo).
+      - "127.0.0.1:${POSTGRES_HOST_PORT}:5432"
+    volumes:
+      # Los datos sobreviven a reinicios del contenedor.
+      - db_data:/var/lib/postgresql/data
+      # Scripts SQL de arranque (activan la extensión vector).
+      - ./services/db/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      # api espera a que este comando responda (ver depends_on en api).
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  # api: agente, RAG y LangGraph (Python). Por ahora solo expone /health.
+  api:
+    build: ./services/api
+    container_name: claimtrace-api
+    environment:
+      # Dentro de Docker, la base se encuentra por el nombre del servicio (db).
+      POSTGRES_HOST: ${POSTGRES_HOST}
+      POSTGRES_PORT: ${POSTGRES_PORT}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    depends_on:
+      db:
+        # Espera a que el healthcheck de db diga "healthy" antes de arrancar.
+        condition: service_healthy
+    ports:
+      # Solo accesible desde tu máquina.
+      - "127.0.0.1:${API_PORT}:8000"
+
+volumes:
+  db_data:
