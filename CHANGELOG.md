@@ -1,5 +1,15 @@
 # Changelog
 Todos los cambios relevantes de ClaimTrace. Una entrada por día de trabajo.
+(La entrada más reciente va arriba.)
+
+## [Día 3] 2026-09-30 · Bloque 2: endurecimiento del stack base
+
+### Añadido
+- `services/api/.dockerignore`.
+
+### Cambiado
+- El compose exige `POSTGRES_PASSWORD`: si falta, no arranca.
+- La API corre como usuario sin privilegios (`appuser`) en vez de root.
 
 ## [Día 2] 2026-09-29 · Bloque 2: Scaffolding Docker
 
