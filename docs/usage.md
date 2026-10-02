@@ -1,7 +1,6 @@
-```markdown
 # Cómo usar ClaimTrace
 
-Estado a 29 sep 2026 (Bloque 2): el stack levanta `db` (Postgres + pgvector) 
+Estado a 30 sep 2026 (Bloque 2): el stack levanta `db` (Postgres + pgvector) 
 y `api` (FastAPI con `/health`). `n8n` se añadirá en el Bloque 7.
 
 ## Requisitos
@@ -9,7 +8,7 @@ y `api` (FastAPI con `/health`). `n8n` se añadirá en el Bloque 7.
 
 ## Cómo levantarlo
 
-1. Copia la plantilla de variables y cambia las contraseñas:
+1. Copia la plantilla de variables y cambia la contraseña:
    ```powershell
    Copy-Item .env.example .env
    ```
@@ -36,8 +35,8 @@ Para pararlo: `docker compose down`. Con `docker compose down -v` se borran tamb
 
 ## Problemas frecuentes
 
-- **`ports are not available` en el 5432:** hay otro Postgres usando ese puerto
-  en tu máquina. Cambia `POSTGRES_HOST_PORT` en `.env` (por ejemplo a 5434). El
+- **`ports are not available` en el 5433:** hay otro Postgres usando ese puerto. 
+  Cambia `POSTGRES_HOST_PORT` en `.env` (por ejemplo a 5434). El
   puerto interno `POSTGRES_PORT` no se toca.
 - **`/health` da "conexión terminada" nada más arrancar:** la API aún no estaba
   escuchando. Espera unos segundos y repite.
