@@ -1,4 +1,4 @@
-# claimtrace
+# ClaimTrace
 
 🚧 En construcción. Proyecto desarrollado como preparación para el rol de Forward Deployed Engineer.
 
