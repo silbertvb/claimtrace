@@ -3,7 +3,7 @@
 - **Estado:** aceptada
 - **Fecha:** 2026-09-29
 - **Bloque:** 2. Scaffolding Docker
-- **Afecta a:** Bloque 4 (RAG), Bloque 6 (registro de auditoría)
+- **Afecta a:** Bloque 4 (RAG), Bloque 7 (registro de auditoría)
 
 ## Contexto
 El RAG necesita almacenar y recuperar fragmentos de políticas con su ID de
@@ -33,7 +33,7 @@ fragmentos, decisión y registro de auditoría en una única base transaccional.
   el compose.
 - **Negativas / riesgos:** menor rendimiento vectorial que una base dedicada a
   gran escala; el carácter solo-añadir del registro se reforzará con permisos
-  y triggers (Bloque 6, ADR-005). Hasta entonces la API se conecta con el
+  y triggers (Bloque 7, ADR-005). Hasta entonces la API se conecta con el
   superusuario de la base, así que no está protegido, y aun después un
   superusuario podría saltárselo.
 - **Cuándo se revisaría:** si el corpus creciera a millones de fragmentos o

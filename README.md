@@ -15,8 +15,10 @@ Python · LangChain · LangGraph · Docker · n8n · Postgres + pgvector
 - [ ] Bloque 3: Datos de prueba
 - [ ] Bloque 4: RAG de políticas y condiciones generales
 - [ ] Bloque 5: Agente de triage
-- [ ] Bloque 6: LangGraph + trazabilidad
-- [ ] Bloque 7: n8n (integración)
-- [ ] Bloque 8: Testing stack Docker completo
-- [ ] Bloque 9: Documentación (README)
-- [ ] Bloque 10: Pitch
+- [ ] Bloque 6: Acceso y roles
+- [ ] Bloque 7: LangGraph + trazabilidad
+- [ ] Bloque 8: n8n (integración)
+- [ ] Bloque 9: Dashboard y métricas (opcional, se valorará más adelante)
+- [ ] Bloque 10: Testing stack Docker completo
+- [ ] Bloque 11: Documentación 
+- [ ] Bloque 12: Pitch

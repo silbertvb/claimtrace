@@ -2,6 +2,13 @@
 Todos los cambios relevantes de ClaimTrace. Una entrada por día de trabajo.
 (La entrada más reciente va arriba.)
 
+## [Día 4] 2026-10-02 · Plan: ruta ampliada a 12 bloques
+
+- Se añade el Bloque 6 (acceso y roles) y el Bloque 9 (dashboard y métricas, opcional).
+- Renumeración de los bloques posteriores. Sin cambios de código.
+- Enfocado en añadir capa de seguridad
+
+
 ## [Día 3] 2026-09-30 · Bloque 2: endurecimiento del stack base
 
 ### Añadido
@@ -20,7 +27,7 @@ Todos los cambios relevantes de ClaimTrace. Una entrada por día de trabajo.
   `/health` y comprueba la conexión a la base.
 - `services/db/init/01-extension.sql`, que activa la extensión `vector`.
 - `.env.example` con cada variable comentada. Las de n8n quedan reservadas para
-  el Bloque 7.
+  el Bloque 8.
 - Carpeta `docs/` con `architecture.md` (diagrama Mermaid), `usage.md` y el
   ADR-001.
 

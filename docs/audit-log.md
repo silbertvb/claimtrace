@@ -1,3 +1,3 @@
 # Registro de auditoría
 
-Pendiente: se documenta en el Bloque 6 (esquema del registro y ejemplo real).
+Pendiente: se documenta en el Bloque 7 (esquema del registro y ejemplo real).

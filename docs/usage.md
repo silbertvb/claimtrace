@@ -1,7 +1,7 @@
 # Cómo usar ClaimTrace
 
 Estado a 30 sep 2026 (Bloque 2): el stack levanta `db` (Postgres + pgvector) 
-y `api` (FastAPI con `/health`). `n8n` se añadirá en el Bloque 7.
+y `api` (FastAPI con `/health`). `n8n` se añadirá en el Bloque 8.
 
 ## Requisitos
 - Docker Desktop en marcha.

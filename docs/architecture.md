@@ -8,7 +8,7 @@ no se han construido.
 ```mermaid
 flowchart LR
     usuario["Reclamación<br/>(formulario simulado)"]
-    n8n["n8n<br/>capa de entrada<br/>(Bloque 7, pendiente)"]
+    n8n["n8n<br/>capa de entrada<br/>(Bloque 8, pendiente)"]
     api["api<br/>FastAPI · puerto 8000"]
     db[("db<br/>Postgres + pgvector<br/>puerto 5432")]
 
@@ -21,7 +21,7 @@ flowchart LR
 |---|---|---|---|
 | `db` | Postgres 16 con pgvector: vectores de políticas y registro de auditoría | 5433 (`POSTGRES_HOST_PORT`) | 5432 |
 | `api` | Agente, RAG y LangGraph (Python). Por ahora solo `/health` | 8000 (`API_PORT`) | 8000 |
-| `n8n` | Capa de entrada (Bloque 7, pendiente) | 5678 (`N8N_PORT`) | 5678 |
+| `n8n` | Capa de entrada (Bloque 8, pendiente) | 5678 (`N8N_PORT`) | 5678 |
 
 Los puertos se publican solo en `127.0.0.1`. Dentro de la red de Docker, `api`
 llega a la base por el nombre del servicio (`db`) y el puerto interno (5432).
