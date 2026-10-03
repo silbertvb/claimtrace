@@ -2,6 +2,14 @@
 Todos los cambios relevantes de ClaimTrace. Una entrada por día de trabajo.
 (La entrada más reciente va arriba.)
 
+## [Día 5] 2026-10-03 · Renombrado de la aseguradora ficticia
+
+### Cambiado
+- La aseguradora ficticia pasa de "Shugo Seguros" a "VERÉGIDA Seguros S.A." (el nombre anterior coincidía con una empresa real de ciberseguridad).
+- Prefijo de IDs de cláusula: `SHUGO-` pasa a `VRG-` (por ejemplo, `VRG-CG-HOG-4.2`).
+- Usuario de Postgres: `shugo` pasa a `claimtrace`. Obliga a recrear el volumen de la base; no había datos que conservar.
+
+
 ## [Día 4] 2026-10-02 · Plan: ruta ampliada a 12 bloques
 
 - Se añade el Bloque 6 (acceso y roles) y el Bloque 9 (dashboard y métricas, opcional).
