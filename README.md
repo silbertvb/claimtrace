@@ -2,7 +2,7 @@
 
 🚧 En construcción. Proyecto desarrollado como preparación para el rol de Forward Deployed Engineer.
 
-Agente de IA agentic para el triage de reclamaciones de una aseguradora ficticia (Shugo Seguros), con RAG sobre políticas y condiciones generales. La trazabilidad y la auditoría están integradas desde el diseño: cada decisión cita la política que la respalda, pasa por revisión humana registrada y, si faltan datos, el agente no decide y escala.
+Agente de IA agentic para el triage de reclamaciones de una aseguradora ficticia (VERÉGIDA Seguros S.A.), con RAG sobre políticas y condiciones generales. La trazabilidad y la auditoría están integradas desde el diseño: cada decisión cita la política que la respalda, pasa por revisión humana registrada y, si faltan datos, el agente no decide y escala.
 
 > Todos los datos del proyecto (clientes, pólizas y reclamaciones) son ficticios.
 

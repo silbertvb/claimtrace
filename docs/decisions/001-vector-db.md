@@ -7,7 +7,7 @@
 
 ## Contexto
 El RAG necesita almacenar y recuperar fragmentos de políticas con su ID de
-cláusula estable (por ejemplo `SHUGO-CG-HOG-4.2`). El registro de auditoría es
+cláusula estable (por ejemplo `VRG-CG-HOG-4.2`). El registro de auditoría es
 solo-añadir y también debe guardarse en algún sitio. El corpus (los documentos
 que el RAG indexa: condiciones generales de Hogar y Auto y politicas de devolución,
 cancelación, fraude y reclamaciones formales) es pequeño (cientos de cláusulas),
