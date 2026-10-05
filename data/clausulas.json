@@ -1,0 +1,296 @@
+[
+  {
+    "clause_id": "VRG-CG-HOG-1.1",
+    "documento": "cg_hogar",
+    "ramo": "hogar",
+    "titulo": "Objeto del seguro de hogar",
+    "texto": "VERÉGIDA Seguros S.A. garantiza, dentro de los límites de estas condiciones generales, los daños materiales sufridos por la vivienda asegurada y su contenido durante la vigencia de la póliza. La vivienda es la que consta en las condiciones particulares."
+  },
+  {
+    "clause_id": "VRG-CG-HOG-3.1",
+    "documento": "cg_hogar",
+    "ramo": "hogar",
+    "titulo": "Cobro del recibo mensual",
+    "texto": "La prima del seguro de hogar se abona mediante recibos mensuales domiciliados en la cuenta bancaria indicada por el tomador. El cargo se realiza el día 5 de cada mes."
+  },
+  {
+    "clause_id": "VRG-CG-HOG-3.2",
+    "documento": "cg_hogar",
+    "ramo": "hogar",
+    "titulo": "Detalle del recibo",
+    "texto": "Cada recibo indica el importe total cargado, los impuestos y, si corresponde, el descuento aplicado conforme a la cláusula 6.1. El tomador puede solicitar el detalle de cualquier recibo a atención al cliente."
+  },
+  {
+    "clause_id": "VRG-CG-HOG-4.1",
+    "documento": "cg_hogar",
+    "ramo": "hogar",
+    "titulo": "Cobertura de incendio y explosión",
+    "texto": "Se cubren los daños causados a la vivienda y a su contenido por incendio, explosión y caída de rayo, hasta la suma asegurada fijada en las condiciones particulares."
+  },
+  {
+    "clause_id": "VRG-CG-HOG-4.2",
+    "documento": "cg_hogar",
+    "ramo": "hogar",
+    "titulo": "Cobertura por daños de agua",
+    "texto": "Se cubren los daños producidos por escapes o roturas accidentales de las conducciones de agua de la vivienda. No se cubre la reparación de la tubería o del aparato que origina el escape."
+  },
+  {
+    "clause_id": "VRG-CG-HOG-4.3",
+    "documento": "cg_hogar",
+    "ramo": "hogar",
+    "titulo": "Responsabilidad civil del hogar",
+    "texto": "VERÉGIDA responde de los daños a terceros causados por el tomador o por las personas que conviven con él, derivados de la vida privada en la vivienda asegurada, hasta el límite indicado en las condiciones particulares."
+  },
+  {
+    "clause_id": "VRG-CG-HOG-5.1",
+    "documento": "cg_hogar",
+    "ramo": "hogar",
+    "titulo": "Exclusiones generales",
+    "texto": "Quedan excluidos los daños causados intencionadamente por el tomador, los derivados de guerra o terremoto y los que se produzcan en viviendas deshabitadas durante más de 60 días seguidos."
+  },
+  {
+    "clause_id": "VRG-CG-HOG-6.1",
+    "documento": "cg_hogar",
+    "ramo": "hogar",
+    "titulo": "Descuento por alarma conectada",
+    "texto": "Si la vivienda asegurada dispone de una alarma conectada a una central receptora y así consta en la póliza, VERÉGIDA aplica un descuento del 8 % sobre la prima mensual desde el primer recibo posterior a la fecha en que se registra la alarma. Si el descuento no figura en un recibo emitido después de ese registro, se regulariza devolviendo la diferencia de los recibos afectados. Si la alarma no consta en la póliza, el descuento no se aplica."
+  },
+  {
+    "clause_id": "VRG-CG-HOG-7.1",
+    "documento": "cg_hogar",
+    "ramo": "hogar",
+    "titulo": "Duración y renovación",
+    "texto": "La póliza tiene duración anual y se renueva automáticamente cada año en la fecha de vencimiento indicada en las condiciones particulares."
+  },
+  {
+    "clause_id": "VRG-CG-HOG-7.2",
+    "documento": "cg_hogar",
+    "ramo": "hogar",
+    "titulo": "Revisión de la prima en la renovación",
+    "texto": "En cada renovación VERÉGIDA puede revisar la prima. La nueva prima se comunica al tomador por escrito con al menos 30 días de antelación y se aplica desde el primer recibo posterior a la renovación."
+  },
+  {
+    "clause_id": "VRG-CG-AUTO-1.1",
+    "documento": "cg_auto",
+    "ramo": "auto",
+    "titulo": "Objeto del seguro de auto",
+    "texto": "VERÉGIDA garantiza, dentro de los límites de estas condiciones generales, las coberturas contratadas para el vehículo identificado en las condiciones particulares, por los daños que se produzcan durante la vigencia de la póliza."
+  },
+  {
+    "clause_id": "VRG-CG-AUTO-3.1",
+    "documento": "cg_auto",
+    "ramo": "auto",
+    "titulo": "Cobro del recibo mensual",
+    "texto": "La prima del seguro de auto se abona mediante recibos mensuales domiciliados en la cuenta bancaria indicada por el tomador. El cargo se realiza el día 10 de cada mes."
+  },
+  {
+    "clause_id": "VRG-CG-AUTO-3.2",
+    "documento": "cg_auto",
+    "ramo": "auto",
+    "titulo": "Detalle del recibo",
+    "texto": "Cada recibo indica el importe total cargado, los impuestos y, si corresponde, la bonificación aplicada conforme a la cláusula 6.1. El tomador puede solicitar el detalle de cualquier recibo a atención al cliente."
+  },
+  {
+    "clause_id": "VRG-CG-AUTO-4.1",
+    "documento": "cg_auto",
+    "ramo": "auto",
+    "titulo": "Responsabilidad civil obligatoria",
+    "texto": "VERÉGIDA cubre la responsabilidad civil del conductor por los daños corporales y materiales causados a terceros con el vehículo asegurado, hasta los límites legales vigentes."
+  },
+  {
+    "clause_id": "VRG-CG-AUTO-4.2",
+    "documento": "cg_auto",
+    "ramo": "auto",
+    "titulo": "Asistencia en carretera",
+    "texto": "En caso de avería o accidente, VERÉGIDA presta asistencia en carretera las 24 horas, incluido el remolque del vehículo hasta el taller más cercano, con un máximo de 100 km por incidencia."
+  },
+  {
+    "clause_id": "VRG-CG-AUTO-5.1",
+    "documento": "cg_auto",
+    "ramo": "auto",
+    "titulo": "Exclusiones generales",
+    "texto": "Quedan excluidos los daños causados intencionadamente, los ocurridos con el conductor bajo los efectos del alcohol o de drogas por encima de los límites legales y los sufridos durante carreras o competiciones."
+  },
+  {
+    "clause_id": "VRG-CG-AUTO-6.1",
+    "documento": "cg_auto",
+    "ramo": "auto",
+    "titulo": "Bonificación por no siniestralidad",
+    "texto": "Por cada año completo sin partes con culpa, VERÉGIDA aplica una bonificación del 5 % sobre la prima mensual, hasta un máximo del 25 %. La bonificación se aplica desde el primer recibo posterior a la renovación y se muestra en el detalle del recibo."
+  },
+  {
+    "clause_id": "VRG-CG-AUTO-7.1",
+    "documento": "cg_auto",
+    "ramo": "auto",
+    "titulo": "Duración y renovación",
+    "texto": "La póliza tiene duración anual y se renueva automáticamente cada año en la fecha de vencimiento indicada en las condiciones particulares."
+  },
+  {
+    "clause_id": "VRG-CG-AUTO-7.2",
+    "documento": "cg_auto",
+    "ramo": "auto",
+    "titulo": "Revisión de la prima en la renovación",
+    "texto": "En cada renovación VERÉGIDA puede revisar la prima. La nueva prima se comunica al tomador por escrito con al menos 30 días de antelación y se aplica desde el primer recibo posterior a la renovación."
+  },
+  {
+    "clause_id": "VRG-POL-DEV-1.1",
+    "documento": "pol_devoluciones",
+    "ramo": "comun",
+    "titulo": "Ámbito de la política de devoluciones",
+    "texto": "Esta política regula la devolución de cobros indebidos y la revisión de recibos impugnados. Se aplica a las pólizas de todos los ramos."
+  },
+  {
+    "clause_id": "VRG-POL-DEV-2.1",
+    "documento": "pol_devoluciones",
+    "ramo": "comun",
+    "titulo": "Cobro indebido de hasta 150 €",
+    "texto": "Es cobro indebido el cargo duplicado, el de importe superior al del recibo emitido y el posterior a la baja efectiva. Si el importe indebido no supera los 150 €, el primer nivel (atención al cliente) ordena la devolución íntegra."
+  },
+  {
+    "clause_id": "VRG-POL-DEV-2.2",
+    "documento": "pol_devoluciones",
+    "ramo": "comun",
+    "titulo": "Cobro indebido entre 150 € y 1.000 €",
+    "texto": "Si el importe indebido supera los 150 € y no excede de 1.000 €, el caso se tramita como reclamación formal conforme a la política de reclamaciones."
+  },
+  {
+    "clause_id": "VRG-POL-DEV-2.3",
+    "documento": "pol_devoluciones",
+    "ramo": "comun",
+    "titulo": "Cobro indebido superior a 1.000 €",
+    "texto": "Si el importe indebido supera los 1.000 €, compliance debe revisar el caso antes de ordenar cualquier devolución."
+  },
+  {
+    "clause_id": "VRG-POL-DEV-3.1",
+    "documento": "pol_devoluciones",
+    "ramo": "comun",
+    "titulo": "Plazo de devolución",
+    "texto": "Una vez aprobada, la devolución se abona en un máximo de 10 días hábiles en la cuenta de la que se cargó el recibo."
+  },
+  {
+    "clause_id": "VRG-POL-DEV-3.2",
+    "documento": "pol_devoluciones",
+    "ramo": "comun",
+    "titulo": "Cobros posteriores a la baja",
+    "texto": "Un cargo con fecha posterior a la baja efectiva es siempre un cobro indebido. El destino de la devolución depende del importe, según las cláusulas 2.1, 2.2 y 2.3."
+  },
+  {
+    "clause_id": "VRG-POL-DEV-4.1",
+    "documento": "pol_devoluciones",
+    "ramo": "comun",
+    "titulo": "Impugnación de recibos",
+    "texto": "El tomador puede impugnar un recibo que considere incorrecto. Atención al cliente lo revisa con las condiciones de la póliza y responde citando la cláusula aplicable."
+  },
+  {
+    "clause_id": "VRG-POL-DEV-4.2",
+    "documento": "pol_devoluciones",
+    "ramo": "comun",
+    "titulo": "Discrepancia con la respuesta",
+    "texto": "Si el tomador ya recibió respuesta de primer nivel y no está conforme, o vuelve a reclamar por el mismo asunto, el caso pasa a reclamación formal."
+  },
+  {
+    "clause_id": "VRG-POL-CAN-1.1",
+    "documento": "pol_cancelacion",
+    "ramo": "comun",
+    "titulo": "Baja a petición del tomador",
+    "texto": "La baja solicitada por el tomador surte efecto el último día del mes en que se solicita, si la solicitud se recibe hasta el día 20 inclusive. Si se recibe después, surte efecto el último día del mes siguiente."
+  },
+  {
+    "clause_id": "VRG-POL-CAN-2.1",
+    "documento": "pol_cancelacion",
+    "ramo": "comun",
+    "titulo": "Recibos posteriores a la baja",
+    "texto": "No se emiten recibos con fecha posterior a la fecha efectiva de baja. Todo cargo posterior se considera cobro indebido y se trata según la política de devoluciones (VRG-POL-DEV-3.2)."
+  },
+  {
+    "clause_id": "VRG-POL-CAN-2.2",
+    "documento": "pol_cancelacion",
+    "ramo": "comun",
+    "titulo": "Baja por impago",
+    "texto": "Si se devuelven dos recibos mensuales consecutivos, VERÉGIDA cancela la póliza tras avisar al tomador con 10 días de antelación. Si el tomador acredita que sí pagó, el caso se revisa como reclamación formal."
+  },
+  {
+    "clause_id": "VRG-POL-CAN-3.1",
+    "documento": "pol_cancelacion",
+    "ramo": "comun",
+    "titulo": "Póliza con siniestro abierto",
+    "texto": "Si la póliza tiene un siniestro abierto, la baja no se tramita hasta el cierre del expediente. Estos casos requieren revisión de compliance antes de contestar al cliente."
+  },
+  {
+    "clause_id": "VRG-POL-CAN-3.2",
+    "documento": "pol_cancelacion",
+    "ramo": "comun",
+    "titulo": "Póliza ya cancelada",
+    "texto": "Si la póliza ya figura como cancelada, no se tramita una nueva baja. Se informa al cliente de la fecha efectiva de la baja anterior."
+  },
+  {
+    "clause_id": "VRG-POL-FRA-1.1",
+    "documento": "pol_fraude",
+    "ramo": "comun",
+    "titulo": "Indicios de fraude",
+    "texto": "Son indicios de fraude los cobros por una póliza que el titular afirma no haber contratado, la modificación del IBAN o de otros datos sin autorización del titular y las solicitudes de baja o de cambios que el titular niega haber hecho."
+  },
+  {
+    "clause_id": "VRG-POL-FRA-2.1",
+    "documento": "pol_fraude",
+    "ramo": "comun",
+    "titulo": "Tratamiento de los casos con indicios",
+    "texto": "Si hay indicios de fraude, el caso se envía al equipo de fraude. No se ordena ninguna devolución ni baja hasta verificar la identidad del titular."
+  },
+  {
+    "clause_id": "VRG-POL-FRA-2.2",
+    "documento": "pol_fraude",
+    "ramo": "comun",
+    "titulo": "Verificación de identidad",
+    "texto": "La identidad se verifica contactando con el titular por el canal registrado en la póliza, nunca por el canal que aporta quien reclama."
+  },
+  {
+    "clause_id": "VRG-POL-FRA-3.1",
+    "documento": "pol_fraude",
+    "ramo": "comun",
+    "titulo": "Cobros por póliza no contratada",
+    "texto": "Un cobro por una póliza que el titular afirma no haber contratado se trata como indicio de fraude, con independencia del importe."
+  },
+  {
+    "clause_id": "VRG-POL-FRA-3.2",
+    "documento": "pol_fraude",
+    "ramo": "comun",
+    "titulo": "Baja o cambios pedidos por un tercero",
+    "texto": "Si el titular niega haber solicitado una baja o un cambio de datos, se considera indicio de fraude y se suspende la tramitación."
+  },
+  {
+    "clause_id": "VRG-POL-REC-1.1",
+    "documento": "pol_reclamaciones",
+    "ramo": "comun",
+    "titulo": "Apertura de la reclamación formal",
+    "texto": "Se abre una reclamación formal cuando el cliente no está conforme con la respuesta de primer nivel o la solicita expresamente. Cada reclamación se registra con un número identificativo."
+  },
+  {
+    "clause_id": "VRG-POL-REC-1.2",
+    "documento": "pol_reclamaciones",
+    "ramo": "comun",
+    "titulo": "Acuse y plazo de respuesta",
+    "texto": "VERÉGIDA acusa recibo de la reclamación formal en un máximo de 2 días hábiles y la responde en un máximo de 15 días hábiles."
+  },
+  {
+    "clause_id": "VRG-POL-REC-2.1",
+    "documento": "pol_reclamaciones",
+    "ramo": "comun",
+    "titulo": "Contenido de la respuesta",
+    "texto": "La respuesta debe citar la política o cláusula aplicada y explicar la decisión en lenguaje claro."
+  },
+  {
+    "clause_id": "VRG-POL-REC-2.2",
+    "documento": "pol_reclamaciones",
+    "ramo": "comun",
+    "titulo": "Escalado a compliance",
+    "texto": "Si el cliente anuncia acciones legales o una queja ante el organismo supervisor, el caso requiere revisión de compliance antes de responder."
+  },
+  {
+    "clause_id": "VRG-POL-REC-3.1",
+    "documento": "pol_reclamaciones",
+    "ramo": "comun",
+    "titulo": "Registro de la decisión",
+    "texto": "Toda decisión, automática o humana, se registra con la cláusula citada y la persona que la valida."
+  }
+]

@@ -1,0 +1,507 @@
+[
+  {
+    "claim_id": "CLM-0001",
+    "tipo": "cobro_indebido",
+    "texto": "Hola, este mes me han cargado dos veces el recibo del seguro de hogar, los dos de 42,50 € el mismo día 5 de agosto. Quiero que me devuelvan uno de ellos. Mi póliza es la VRG-PLZ-0003.",
+    "policy_id": "VRG-PLZ-0003",
+    "importe": 42.5,
+    "fecha": "2026-08-05",
+    "destino_esperado": "atencion_cliente",
+    "esperado_abstencion": false,
+    "motivo_abstencion": null,
+    "campos_faltantes": [],
+    "clausulas_esperadas": [
+      "VRG-POL-DEV-2.1"
+    ]
+  },
+  {
+    "claim_id": "CLM-0002",
+    "tipo": "cobro_indebido",
+    "texto": "Di de baja mi seguro de coche en junio y aun así me han pasado un recibo de 67,20 € el 10 de septiembre. Es la póliza VRG-PLZ-0016 y no tenían que cobrarme nada.",
+    "policy_id": "VRG-PLZ-0016",
+    "importe": 67.2,
+    "fecha": "2026-09-10",
+    "destino_esperado": "atencion_cliente",
+    "esperado_abstencion": false,
+    "motivo_abstencion": null,
+    "campos_faltantes": [],
+    "clausulas_esperadas": [
+      "VRG-POL-DEV-3.2",
+      "VRG-POL-DEV-2.1"
+    ]
+  },
+  {
+    "claim_id": "CLM-0003",
+    "tipo": "cobro_indebido",
+    "texto": "El recibo de julio de mi póliza VRG-PLZ-0006 tenía que ser de unos 44 € y me han cobrado 142 €, es decir, 98 € de más. Pido que me devuelvan la diferencia.",
+    "policy_id": "VRG-PLZ-0006",
+    "importe": 98.0,
+    "fecha": "2026-07-05",
+    "destino_esperado": "atencion_cliente",
+    "esperado_abstencion": false,
+    "motivo_abstencion": null,
+    "campos_faltantes": [],
+    "clausulas_esperadas": [
+      "VRG-POL-DEV-2.1"
+    ]
+  },
+  {
+    "claim_id": "CLM-0004",
+    "tipo": "cobro_indebido",
+    "texto": "Me han cobrado de golpe 480 € el 10 de agosto en mi seguro de coche (VRG-PLZ-0014), cuando yo pago todos los meses. Creo que se han equivocado y han cobrado el año entero.",
+    "policy_id": "VRG-PLZ-0014",
+    "importe": 480.0,
+    "fecha": "2026-08-10",
+    "destino_esperado": "reclamaciones_formales",
+    "esperado_abstencion": false,
+    "motivo_abstencion": null,
+    "campos_faltantes": [],
+    "clausulas_esperadas": [
+      "VRG-POL-DEV-2.2"
+    ]
+  },
+  {
+    "claim_id": "CLM-0005",
+    "tipo": "cobro_indebido",
+    "texto": "La póliza VRG-PLZ-0008 está cancelada desde marzo y desde entonces me han cargado seis recibos de 42,50 €. En total son 255 € hasta el 5 de septiembre. Exijo la devolución completa.",
+    "policy_id": "VRG-PLZ-0008",
+    "importe": 255.0,
+    "fecha": "2026-09-05",
+    "destino_esperado": "reclamaciones_formales",
+    "esperado_abstencion": false,
+    "motivo_abstencion": null,
+    "campos_faltantes": [],
+    "clausulas_esperadas": [
+      "VRG-POL-DEV-3.2",
+      "VRG-POL-DEV-2.2"
+    ]
+  },
+  {
+    "claim_id": "CLM-0006",
+    "tipo": "cobro_indebido",
+    "texto": "El 10 de agosto me cargaron 1.250 € en la cuenta por mi seguro de coche VRG-PLZ-0020. Es un error enorme y necesito la devolución cuanto antes.",
+    "policy_id": "VRG-PLZ-0020",
+    "importe": 1250.0,
+    "fecha": "2026-08-10",
+    "destino_esperado": "compliance_revision",
+    "esperado_abstencion": false,
+    "motivo_abstencion": null,
+    "campos_faltantes": [],
+    "clausulas_esperadas": [
+      "VRG-POL-DEV-2.3"
+    ]
+  },
+  {
+    "claim_id": "CLM-0007",
+    "tipo": "cobro_indebido",
+    "texto": "Me han cobrado de más en el recibo de septiembre de mi póliza VRG-PLZ-0002, pero no recuerdo cuánto fue exactamente. ¿Me lo pueden revisar?",
+    "policy_id": "VRG-PLZ-0002",
+    "importe": null,
+    "fecha": "2026-09-05",
+    "destino_esperado": null,
+    "esperado_abstencion": true,
+    "motivo_abstencion": "campo_ausente",
+    "campos_faltantes": [
+      "importe"
+    ],
+    "clausulas_esperadas": []
+  },
+  {
+    "claim_id": "CLM-0008",
+    "tipo": "cobro_indebido",
+    "texto": "El 5 de septiembre me han cobrado 39,90 € por una póliza de hogar (VRG-PLZ-0011) que yo nunca he contratado. No reconozco esa póliza ni he firmado nada con vosotros.",
+    "policy_id": "VRG-PLZ-0011",
+    "importe": 39.9,
+    "fecha": "2026-09-05",
+    "destino_esperado": "fraude",
+    "esperado_abstencion": false,
+    "motivo_abstencion": null,
+    "campos_faltantes": [],
+    "clausulas_esperadas": [
+      "VRG-POL-FRA-3.1",
+      "VRG-POL-FRA-2.1"
+    ]
+  },
+  {
+    "claim_id": "CLM-0009",
+    "tipo": "cobro_indebido",
+    "texto": "Me ha llegado un aviso de que se ha cambiado el IBAN de mi póliza de coche (VRG-PLZ-0013) y el recibo de 72,10 € del 10 de septiembre se ha cargado en una cuenta que no es mía. Yo no he pedido ningún cambio.",
+    "policy_id": "VRG-PLZ-0013",
+    "importe": 72.1,
+    "fecha": "2026-09-10",
+    "destino_esperado": "fraude",
+    "esperado_abstencion": false,
+    "motivo_abstencion": null,
+    "campos_faltantes": [],
+    "clausulas_esperadas": [
+      "VRG-POL-FRA-3.2",
+      "VRG-POL-FRA-2.1"
+    ]
+  },
+  {
+    "claim_id": "CLM-0010",
+    "tipo": "cobro_indebido",
+    "texto": "Me han cobrado 55 € el 5 de agosto por un seguro y no me cuadra. No tengo a mano el número de póliza, pero quiero que lo revisen.",
+    "policy_id": null,
+    "importe": 55.0,
+    "fecha": "2026-08-05",
+    "destino_esperado": null,
+    "esperado_abstencion": true,
+    "motivo_abstencion": "campo_ausente",
+    "campos_faltantes": [
+      "policy_id"
+    ],
+    "clausulas_esperadas": []
+  },
+  {
+    "claim_id": "CLM-0011",
+    "tipo": "disputa_recibo",
+    "texto": "Tengo una alarma conectada a central en mi casa y consta en mi póliza VRG-PLZ-0001, pero el recibo del 5 de septiembre (46,10 €) no lleva ningún descuento. ¿Por qué?",
+    "policy_id": "VRG-PLZ-0001",
+    "importe": 46.1,
+    "fecha": "2026-09-05",
+    "destino_esperado": "atencion_cliente",
+    "esperado_abstencion": false,
+    "motivo_abstencion": null,
+    "campos_faltantes": [],
+    "clausulas_esperadas": [
+      "VRG-CG-HOG-6.1",
+      "VRG-POL-DEV-4.1"
+    ]
+  },
+  {
+    "claim_id": "CLM-0012",
+    "tipo": "disputa_recibo",
+    "texto": "Contraté la alarma conectada hace unos meses y me dijeron que tendría descuento. Mi recibo de agosto, póliza VRG-PLZ-0005, sigue siendo de 51,30 € completos. Quiero que me lo corrijan.",
+    "policy_id": "VRG-PLZ-0005",
+    "importe": 51.3,
+    "fecha": "2026-08-05",
+    "destino_esperado": "atencion_cliente",
+    "esperado_abstencion": false,
+    "motivo_abstencion": null,
+    "campos_faltantes": [],
+    "clausulas_esperadas": [
+      "VRG-CG-HOG-6.1",
+      "VRG-POL-DEV-4.1"
+    ]
+  },
+  {
+    "claim_id": "CLM-0013",
+    "tipo": "disputa_recibo",
+    "texto": "Un vecino me ha dicho que tiene descuento en el recibo por la alarma. Yo no tengo alarma, pero no entiendo por qué a mí no me lo aplican también. Mi recibo de septiembre es de 48,20 € (póliza VRG-PLZ-0004).",
+    "policy_id": "VRG-PLZ-0004",
+    "importe": 48.2,
+    "fecha": "2026-09-05",
+    "destino_esperado": "atencion_cliente",
+    "esperado_abstencion": false,
+    "motivo_abstencion": null,
+    "campos_faltantes": [],
+    "clausulas_esperadas": [
+      "VRG-CG-HOG-6.1",
+      "VRG-POL-DEV-4.1"
+    ]
+  },
+  {
+    "claim_id": "CLM-0014",
+    "tipo": "disputa_recibo",
+    "texto": "Mi recibo de hogar de septiembre ha pasado de 52 a 61 € y nadie me avisó. Es la póliza VRG-PLZ-0009. ¿Es normal que suba así?",
+    "policy_id": "VRG-PLZ-0009",
+    "importe": 61.0,
+    "fecha": "2026-09-05",
+    "destino_esperado": "atencion_cliente",
+    "esperado_abstencion": false,
+    "motivo_abstencion": null,
+    "campos_faltantes": [],
+    "clausulas_esperadas": [
+      "VRG-CG-HOG-7.2",
+      "VRG-POL-DEV-4.1"
+    ]
+  },
+  {
+    "claim_id": "CLM-0015",
+    "tipo": "disputa_recibo",
+    "texto": "Llevo cuatro años sin dar ningún parte con mi coche y el recibo de agosto, de 58,40 €, no refleja ninguna bonificación. La póliza es la VRG-PLZ-0017.",
+    "policy_id": "VRG-PLZ-0017",
+    "importe": 58.4,
+    "fecha": "2026-08-10",
+    "destino_esperado": "atencion_cliente",
+    "esperado_abstencion": false,
+    "motivo_abstencion": null,
+    "campos_faltantes": [],
+    "clausulas_esperadas": [
+      "VRG-CG-AUTO-6.1",
+      "VRG-POL-DEV-4.1"
+    ]
+  },
+  {
+    "claim_id": "CLM-0016",
+    "tipo": "disputa_recibo",
+    "texto": "Es la segunda vez que escribo. Hace un mes me dijisteis que el descuento por alarma de mi póliza VRG-PLZ-0007 se aplicaría, y el recibo del 5 de septiembre (49 €) sigue sin llevarlo. No estoy conforme con vuestra respuesta y quiero presentar una reclamación formal.",
+    "policy_id": "VRG-PLZ-0007",
+    "importe": 49.0,
+    "fecha": "2026-09-05",
+    "destino_esperado": "reclamaciones_formales",
+    "esperado_abstencion": false,
+    "motivo_abstencion": null,
+    "campos_faltantes": [],
+    "clausulas_esperadas": [
+      "VRG-POL-DEV-4.2",
+      "VRG-CG-HOG-6.1",
+      "VRG-POL-REC-1.1"
+    ]
+  },
+  {
+    "claim_id": "CLM-0017",
+    "tipo": "disputa_recibo",
+    "texto": "El último recibo de mi seguro de hogar (VRG-PLZ-0012) me parece muy alto, 53 €. ¿Pueden revisarlo?",
+    "policy_id": "VRG-PLZ-0012",
+    "importe": 53.0,
+    "fecha": null,
+    "destino_esperado": null,
+    "esperado_abstencion": true,
+    "motivo_abstencion": "campo_ausente",
+    "campos_faltantes": [
+      "fecha"
+    ],
+    "clausulas_esperadas": []
+  },
+  {
+    "claim_id": "CLM-0018",
+    "tipo": "disputa_recibo",
+    "texto": "Me ha llegado el recibo de septiembre, de 63,75 €, de una póliza de coche (VRG-PLZ-0021) que no es mía. No tengo ningún coche asegurado con vosotros y creo que alguien ha usado mis datos para contratarla.",
+    "policy_id": "VRG-PLZ-0021",
+    "importe": 63.75,
+    "fecha": "2026-09-10",
+    "destino_esperado": "fraude",
+    "esperado_abstencion": false,
+    "motivo_abstencion": null,
+    "campos_faltantes": [],
+    "clausulas_esperadas": [
+      "VRG-POL-FRA-3.1",
+      "VRG-POL-FRA-2.1"
+    ]
+  },
+  {
+    "claim_id": "CLM-0019",
+    "tipo": "disputa_recibo",
+    "texto": "Reclamé hace semanas por el recibo de agosto de la póliza VRG-PLZ-0019 (59,90 €) y nadie me da una solución. Si no me contestan esta semana acudiré al organismo supervisor del seguro y a un abogado.",
+    "policy_id": "VRG-PLZ-0019",
+    "importe": 59.9,
+    "fecha": "2026-08-10",
+    "destino_esperado": "compliance_revision",
+    "esperado_abstencion": false,
+    "motivo_abstencion": null,
+    "campos_faltantes": [],
+    "clausulas_esperadas": [
+      "VRG-POL-REC-2.2"
+    ]
+  },
+  {
+    "claim_id": "CLM-0020",
+    "tipo": "disputa_recibo",
+    "texto": "El recibo del 10 de septiembre de mi póliza de coche VRG-PLZ-0024 no me cuadra, creo que es más alto de lo normal, pero ahora mismo no tengo el importe a mano.",
+    "policy_id": "VRG-PLZ-0024",
+    "importe": null,
+    "fecha": "2026-09-10",
+    "destino_esperado": null,
+    "esperado_abstencion": true,
+    "motivo_abstencion": "campo_ausente",
+    "campos_faltantes": [
+      "importe"
+    ],
+    "clausulas_esperadas": []
+  },
+  {
+    "claim_id": "CLM-0021",
+    "tipo": "cancelacion_poliza",
+    "texto": "Quiero dar de baja mi seguro de hogar, póliza VRG-PLZ-0002. Lo solicito hoy, 10 de septiembre. ¿Cuándo dejará de estar en vigor?",
+    "policy_id": "VRG-PLZ-0002",
+    "importe": null,
+    "fecha": "2026-09-10",
+    "destino_esperado": "atencion_cliente",
+    "esperado_abstencion": false,
+    "motivo_abstencion": null,
+    "campos_faltantes": [],
+    "clausulas_esperadas": [
+      "VRG-POL-CAN-1.1"
+    ]
+  },
+  {
+    "claim_id": "CLM-0022",
+    "tipo": "cancelacion_poliza",
+    "texto": "Solicito la baja de mi póliza de coche VRG-PLZ-0015 con fecha de hoy, 24 de septiembre, y quiero que sea efectiva hoy mismo.",
+    "policy_id": "VRG-PLZ-0015",
+    "importe": null,
+    "fecha": "2026-09-24",
+    "destino_esperado": "atencion_cliente",
+    "esperado_abstencion": false,
+    "motivo_abstencion": null,
+    "campos_faltantes": [],
+    "clausulas_esperadas": [
+      "VRG-POL-CAN-1.1"
+    ]
+  },
+  {
+    "claim_id": "CLM-0023",
+    "tipo": "cancelacion_poliza",
+    "texto": "Pido la baja de la póliza VRG-PLZ-0006 desde el 15 de septiembre. ¿Me seguirán cobrando recibos después de la baja?",
+    "policy_id": "VRG-PLZ-0006",
+    "importe": null,
+    "fecha": "2026-09-15",
+    "destino_esperado": "atencion_cliente",
+    "esperado_abstencion": false,
+    "motivo_abstencion": null,
+    "campos_faltantes": [],
+    "clausulas_esperadas": [
+      "VRG-POL-CAN-1.1",
+      "VRG-POL-CAN-2.1"
+    ]
+  },
+  {
+    "claim_id": "CLM-0024",
+    "tipo": "cancelacion_poliza",
+    "texto": "Quiero cancelar mi seguro de coche VRG-PLZ-0022. Hoy es 12 de septiembre y no quiero seguir pagando.",
+    "policy_id": "VRG-PLZ-0022",
+    "importe": null,
+    "fecha": "2026-09-12",
+    "destino_esperado": "atencion_cliente",
+    "esperado_abstencion": false,
+    "motivo_abstencion": null,
+    "campos_faltantes": [],
+    "clausulas_esperadas": [
+      "VRG-POL-CAN-3.2"
+    ]
+  },
+  {
+    "claim_id": "CLM-0025",
+    "tipo": "cancelacion_poliza",
+    "texto": "Me han comunicado que mi póliza VRG-PLZ-0010 se ha cancelado por impago, pero yo pagué los dos recibos y tengo los justificantes del banco. No acepto esta baja. Fecha de la comunicación: 28 de agosto.",
+    "policy_id": "VRG-PLZ-0010",
+    "importe": null,
+    "fecha": "2026-08-28",
+    "destino_esperado": "reclamaciones_formales",
+    "esperado_abstencion": false,
+    "motivo_abstencion": null,
+    "campos_faltantes": [],
+    "clausulas_esperadas": [
+      "VRG-POL-CAN-2.2"
+    ]
+  },
+  {
+    "claim_id": "CLM-0026",
+    "tipo": "cancelacion_poliza",
+    "texto": "Quiero dar de baja la póliza VRG-PLZ-0023 el 16 de septiembre. Tengo un parte abierto por un golpe del mes pasado, pero ya no quiero seguir con vosotros.",
+    "policy_id": "VRG-PLZ-0023",
+    "importe": null,
+    "fecha": "2026-09-16",
+    "destino_esperado": "compliance_revision",
+    "esperado_abstencion": false,
+    "motivo_abstencion": null,
+    "campos_faltantes": [],
+    "clausulas_esperadas": [
+      "VRG-POL-CAN-3.1"
+    ]
+  },
+  {
+    "claim_id": "CLM-0027",
+    "tipo": "cancelacion_poliza",
+    "texto": "Pedí la baja de mi póliza VRG-PLZ-0012 por correo el 12 de julio y me siguen cobrando: dos recibos, 106 € en total. Ya llamé dos veces y me dijeron que estaba tramitado, pero sigue igual. Quiero presentar una reclamación formal.",
+    "policy_id": "VRG-PLZ-0012",
+    "importe": 106.0,
+    "fecha": "2026-07-12",
+    "destino_esperado": "reclamaciones_formales",
+    "esperado_abstencion": false,
+    "motivo_abstencion": null,
+    "campos_faltantes": [],
+    "clausulas_esperadas": [
+      "VRG-POL-CAN-1.1",
+      "VRG-POL-CAN-2.1",
+      "VRG-POL-REC-1.1"
+    ]
+  },
+  {
+    "claim_id": "CLM-0028",
+    "tipo": "cancelacion_poliza",
+    "texto": "Me ha llegado un aviso de que mi póliza VRG-PLZ-0018 se cancela, y yo no he pedido ninguna baja. Creo que alguien se ha hecho pasar por mí. Recibí el aviso el 18 de septiembre.",
+    "policy_id": "VRG-PLZ-0018",
+    "importe": null,
+    "fecha": "2026-09-18",
+    "destino_esperado": "fraude",
+    "esperado_abstencion": false,
+    "motivo_abstencion": null,
+    "campos_faltantes": [],
+    "clausulas_esperadas": [
+      "VRG-POL-FRA-3.2",
+      "VRG-POL-FRA-2.1"
+    ]
+  },
+  {
+    "claim_id": "CLM-0029",
+    "tipo": "cancelacion_poliza",
+    "texto": "Quiero darme de baja de vuestro seguro a partir del 14 de septiembre, pero ahora mismo no encuentro mi número de póliza.",
+    "policy_id": null,
+    "importe": null,
+    "fecha": "2026-09-14",
+    "destino_esperado": null,
+    "esperado_abstencion": true,
+    "motivo_abstencion": "campo_ausente",
+    "campos_faltantes": [
+      "policy_id"
+    ],
+    "clausulas_esperadas": []
+  },
+  {
+    "claim_id": "CLM-0030",
+    "tipo": "cancelacion_poliza",
+    "texto": "Quiero cancelar mi seguro de coche, póliza VRG-PLZ-0014. ¿Qué tengo que hacer?",
+    "policy_id": "VRG-PLZ-0014",
+    "importe": null,
+    "fecha": null,
+    "destino_esperado": null,
+    "esperado_abstencion": true,
+    "motivo_abstencion": "campo_ausente",
+    "campos_faltantes": [
+      "fecha"
+    ],
+    "clausulas_esperadas": []
+  },
+  {
+    "claim_id": "CLM-0031",
+    "tipo": "disputa_recibo",
+    "texto": "El recibo de septiembre de mi póliza VRG-PLZ-0003, de 44 €, incluye un recargo de 1,50 € por pagar a plazos. Nadie me lo explicó cuando contraté. Quiero saber por qué me lo cobran.",
+    "policy_id": "VRG-PLZ-0003",
+    "importe": 44.0,
+    "fecha": "2026-09-05",
+    "destino_esperado": null,
+    "esperado_abstencion": true,
+    "motivo_abstencion": "sin_clausula_relevante",
+    "campos_faltantes": [],
+    "clausulas_esperadas": []
+  },
+  {
+    "claim_id": "CLM-0032",
+    "tipo": "cancelacion_poliza",
+    "texto": "Vendí mi coche el 8 de septiembre y ya no lo tengo. Quiero que me devuelvan la parte de la prima de la póliza VRG-PLZ-0013 que ya no voy a usar y que me expliquen cómo se calcula.",
+    "policy_id": "VRG-PLZ-0013",
+    "importe": null,
+    "fecha": "2026-09-08",
+    "destino_esperado": null,
+    "esperado_abstencion": true,
+    "motivo_abstencion": "sin_clausula_relevante",
+    "campos_faltantes": [],
+    "clausulas_esperadas": []
+  },
+  {
+    "claim_id": "CLM-0033",
+    "tipo": "otro",
+    "texto": "Buenas tardes, ¿tienen oficina abierta los sábados? Me gustaría pedir un presupuesto para asegurar el local de mi negocio.",
+    "policy_id": null,
+    "importe": null,
+    "fecha": null,
+    "destino_esperado": null,
+    "esperado_abstencion": true,
+    "motivo_abstencion": "tipo_no_reconocible",
+    "campos_faltantes": [],
+    "clausulas_esperadas": []
+  }
+]
