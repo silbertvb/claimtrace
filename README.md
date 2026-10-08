@@ -12,7 +12,7 @@ Python · LangChain · LangGraph · Docker · n8n · Postgres + pgvector
 ## Estado
 - [x] Bloque 1: Caso de negocio
 - [x] Bloque 2: Scaffolding Docker
-- [ ] Bloque 3: Datos de prueba
+- [x] Bloque 3: Datos de prueba  (VERÉGIDA Seguros S.A. y todos los datos (clientes, pólizas, cláusulas y reclamaciones) son ficticios.)
 - [ ] Bloque 4: RAG de políticas y condiciones generales
 - [ ] Bloque 5: Agente de triage
 - [ ] Bloque 6: Acceso y roles
