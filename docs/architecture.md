@@ -1,7 +1,7 @@
 # Arquitectura de ClaimTrace
 
-Estado a 29 sep 2026 (Bloque 2). Los elementos punteados están previstos y aún
-no se han construido.
+Estado a 8 oct 2026 (Bloque 3: datos de prueba). Los elementos punteados están
+previstos y aún no se han construido.
 
 ## Servicios
 
@@ -29,6 +29,7 @@ llega a la base por el nombre del servicio (`db`) y el puerto interno (5432).
 ## Decisiones
 
 - Base vectorial: pgvector, ver [ADR-001](decisions/001-vector-db.md).
+- Formato de los datos de prueba y criterios de etiquetado, ver [ADR-002](decisions/002-test-data-format.md).
 
 ## Datos de prueba
 
@@ -46,10 +47,12 @@ JSON, un archivo por entidad en `data/`. Los campos vacíos se escriben como `nu
 
 | Archivo | Contenido | Cómo se genera |
 |---|---|---|
-| `clausulas.json` | 42 cláusulas de 6 documentos | Escrito a mano |
-| `reclamaciones.json` | 33 reclamaciones etiquetadas | Escrito a mano |
-| `polizas.json` | 24 pólizas | Script generador |
-| `usuarios.json` | 3 usuarios sintéticos, sin contraseñas | Script generador |
+| `clausulas.json` | 42 cláusulas de 6 documentos | Fijo (no lo genera el script) |
+| `reclamaciones.json` | 33 reclamaciones etiquetadas | Fijo (no lo genera el script) |
+| `polizas.json` | 24 pólizas | `scripts/generar_datos.py` |
+| `usuarios.json` | 3 usuarios sintéticos, sin contraseñas | `scripts/generar_datos.py` |
+
+`data/` contiene solo datos; el código que los genera y valida vive en `scripts/`.
 
 ### Convención de IDs
 
@@ -118,18 +121,18 @@ El robo en la vivienda también queda fuera del alcance del proyecto.
 | `policy_id` | `VRG-PLZ-0001` | |
 | `ramo` | `hogar` / `auto` | |
 | `estado` | `activa` / `cancelada` | |
-| `prima_mensual` | `42.50` | |
+| `prima_mensual` | `42.50` | Prima base mensual, sin descuento por alarma. Fija en las pólizas con recibos en reclamaciones; con semilla en las demás |
 | `fecha_alta` | `2024-03-01` | |
 | `alarma_asociada` | `true` / `false` / `null` | Solo en Hogar; `null` en Auto |
 
-**Reparto fijo de las 24 pólizas** (lo único aleatorio, con semilla fija, es la prima y la fecha de alta):
+**Reparto fijo de las 24 pólizas** (la fecha de alta sale de un generador con semilla fija; la prima, solo en las pólizas sin prima fija):
 
 | Pólizas | Ramo | `alarma_asociada` |
 |---|---|---|
 | `0001` a `0012` | hogar | `true` en las impares y `false` en las pares (6 y 6) |
 | `0013` a `0024` | auto | `null` |
 
-Pólizas con `estado: cancelada`: `VRG-PLZ-0008` (Hogar), `VRG-PLZ-0016` y `VRG-PLZ-0022` (Auto). El resto están `activa`.
+Pólizas con `estado: cancelada`: `VRG-PLZ-0008` (Hogar), `VRG-PLZ-0016` y `VRG-PLZ-0022` (Auto). El resto están `activa`. Una póliza cancelada solo aparece en reclamaciones que citan `VRG-POL-DEV-3.2`, `VRG-POL-CAN-2.1` o `VRG-POL-CAN-3.2`.
 
 El día de cargo del recibo es el 5 en Hogar y el 10 en Auto.
 
@@ -140,7 +143,7 @@ El día de cargo del recibo es el 5 en Hogar y el 10 en Auto.
 | `claim_id` | `CLM-0001` | Identificador |
 | `tipo` | `cobro_indebido` / `disputa_recibo` / `cancelacion_poliza` / `otro` | `otro` solo en el caso de tipo no reconocible |
 | `texto` | Mensaje del cliente | Lo que lee el agente |
-| `policy_id`, `importe`, `fecha` | o `null` | Datos de la regla de abstención |
+| `policy_id`, `importe`, `fecha` | o `null` | Datos de la regla de abstención. `policy_id` es `null` solo en `CLM-0010` y `CLM-0029` (`campo_ausente`) y en `CLM-0033` (`tipo_no_reconocible`) |
 | `destino_esperado` | `atencion_cliente`, `reclamaciones_formales`, `fraude`, `compliance_revision` | Etiqueta para medir el enrutamiento. `null` si hay abstención |
 | `esperado_abstencion` | `true` / `false` | Si el agente debe parar y escalar |
 | `motivo_abstencion` | `campo_ausente` / `sin_clausula_relevante` / `tipo_no_reconocible` / `null` | Criterio verificable |
@@ -177,6 +180,14 @@ Destinos de los 24 casos completos: 12 `atencion_cliente`, 5 `reclamaciones_form
 
 La cláusula `VRG-CG-HOG-6.1` concede un 8 % de descuento si la póliza tiene alarma conectada registrada. Las reclamaciones `CLM-0011`, `CLM-0012` y `CLM-0016` son de pólizas con alarma (el descuento debe aplicarse) y `CLM-0013` es de una póliza sin alarma (no aplica). Una póliza de Auto nunca debe recibir esa cláusula, lo que también prueba el filtro por `ramo`.
 
+### Generador y validación (`scripts/generar_datos.py`)
+
+```powershell
+python scripts/generar_datos.py
+```
+
+Genera `polizas.json` y `usuarios.json` con la semilla 2026 (misma semilla, mismos datos) y, **antes de guardar**, valida la coherencia de los cuatro archivos con 12 comprobaciones: importe de `CLM-0004` (12 veces la prima de su póliza), fecha de la reclamación no anterior al alta (el mismo día cuenta como cubierto), `policy_id` y cláusulas existentes, destino y abstención coherentes, totales (33 casos y 9 abstenciones), combinación de cláusulas de fraude, pólizas canceladas, ramo de las cláusulas, recibos duplicados, campos requeridos e importe y mes presentes en el texto. Si alguna falla, muestra todos los errores, no guarda nada y termina con código 1.
+
 ### Usuarios sintéticos (`usuarios.json`)
 
 | Campo | Ejemplo | Notas |
@@ -186,4 +197,3 @@ La cláusula `VRG-CG-HOG-6.1` concede un 8 % de descuento si la póliza tiene al
 | `rol` | `analista` / `supervisor` | 2 analistas y 1 supervisor; sin rol de administrador |
 
 Sin contraseñas ni hashes en `data/`. Las credenciales de prueba se generan al sembrar la base, desde variables de entorno.
-
