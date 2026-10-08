@@ -1,0 +1,17 @@
+[
+  {
+    "usuario_id": "USR-001",
+    "username": "analista1",
+    "rol": "analista"
+  },
+  {
+    "usuario_id": "USR-002",
+    "username": "analista2",
+    "rol": "analista"
+  },
+  {
+    "usuario_id": "USR-003",
+    "username": "supervisor1",
+    "rol": "supervisor"
+  }
+]

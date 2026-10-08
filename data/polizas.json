@@ -1,0 +1,194 @@
+[
+  {
+    "policy_id": "VRG-PLZ-0001",
+    "ramo": "hogar",
+    "estado": "activa",
+    "prima_mensual": 46.1,
+    "fecha_alta": "2022-09-01",
+    "alarma_asociada": true
+  },
+  {
+    "policy_id": "VRG-PLZ-0002",
+    "ramo": "hogar",
+    "estado": "activa",
+    "prima_mensual": 45.67,
+    "fecha_alta": "2024-11-14",
+    "alarma_asociada": false
+  },
+  {
+    "policy_id": "VRG-PLZ-0003",
+    "ramo": "hogar",
+    "estado": "activa",
+    "prima_mensual": 42.5,
+    "fecha_alta": "2025-08-18",
+    "alarma_asociada": true
+  },
+  {
+    "policy_id": "VRG-PLZ-0004",
+    "ramo": "hogar",
+    "estado": "activa",
+    "prima_mensual": 48.2,
+    "fecha_alta": "2022-07-30",
+    "alarma_asociada": false
+  },
+  {
+    "policy_id": "VRG-PLZ-0005",
+    "ramo": "hogar",
+    "estado": "activa",
+    "prima_mensual": 51.3,
+    "fecha_alta": "2023-04-03",
+    "alarma_asociada": true
+  },
+  {
+    "policy_id": "VRG-PLZ-0006",
+    "ramo": "hogar",
+    "estado": "activa",
+    "prima_mensual": 44.0,
+    "fecha_alta": "2025-05-15",
+    "alarma_asociada": false
+  },
+  {
+    "policy_id": "VRG-PLZ-0007",
+    "ramo": "hogar",
+    "estado": "activa",
+    "prima_mensual": 49.0,
+    "fecha_alta": "2025-06-26",
+    "alarma_asociada": true
+  },
+  {
+    "policy_id": "VRG-PLZ-0008",
+    "ramo": "hogar",
+    "estado": "cancelada",
+    "prima_mensual": 42.5,
+    "fecha_alta": "2025-02-13",
+    "alarma_asociada": false
+  },
+  {
+    "policy_id": "VRG-PLZ-0009",
+    "ramo": "hogar",
+    "estado": "activa",
+    "prima_mensual": 61.0,
+    "fecha_alta": "2024-05-11",
+    "alarma_asociada": true
+  },
+  {
+    "policy_id": "VRG-PLZ-0010",
+    "ramo": "hogar",
+    "estado": "activa",
+    "prima_mensual": 56.8,
+    "fecha_alta": "2025-01-26",
+    "alarma_asociada": false
+  },
+  {
+    "policy_id": "VRG-PLZ-0011",
+    "ramo": "hogar",
+    "estado": "activa",
+    "prima_mensual": 39.9,
+    "fecha_alta": "2024-10-02",
+    "alarma_asociada": true
+  },
+  {
+    "policy_id": "VRG-PLZ-0012",
+    "ramo": "hogar",
+    "estado": "activa",
+    "prima_mensual": 53.0,
+    "fecha_alta": "2025-04-16",
+    "alarma_asociada": false
+  },
+  {
+    "policy_id": "VRG-PLZ-0013",
+    "ramo": "auto",
+    "estado": "activa",
+    "prima_mensual": 72.1,
+    "fecha_alta": "2024-06-22",
+    "alarma_asociada": null
+  },
+  {
+    "policy_id": "VRG-PLZ-0014",
+    "ramo": "auto",
+    "estado": "activa",
+    "prima_mensual": 40.0,
+    "fecha_alta": "2023-05-07",
+    "alarma_asociada": null
+  },
+  {
+    "policy_id": "VRG-PLZ-0015",
+    "ramo": "auto",
+    "estado": "activa",
+    "prima_mensual": 40.09,
+    "fecha_alta": "2022-06-15",
+    "alarma_asociada": null
+  },
+  {
+    "policy_id": "VRG-PLZ-0016",
+    "ramo": "auto",
+    "estado": "cancelada",
+    "prima_mensual": 67.2,
+    "fecha_alta": "2022-08-15",
+    "alarma_asociada": null
+  },
+  {
+    "policy_id": "VRG-PLZ-0017",
+    "ramo": "auto",
+    "estado": "activa",
+    "prima_mensual": 58.4,
+    "fecha_alta": "2023-08-12",
+    "alarma_asociada": null
+  },
+  {
+    "policy_id": "VRG-PLZ-0018",
+    "ramo": "auto",
+    "estado": "activa",
+    "prima_mensual": 68.59,
+    "fecha_alta": "2024-07-09",
+    "alarma_asociada": null
+  },
+  {
+    "policy_id": "VRG-PLZ-0019",
+    "ramo": "auto",
+    "estado": "activa",
+    "prima_mensual": 59.9,
+    "fecha_alta": "2022-01-24",
+    "alarma_asociada": null
+  },
+  {
+    "policy_id": "VRG-PLZ-0020",
+    "ramo": "auto",
+    "estado": "activa",
+    "prima_mensual": 68.52,
+    "fecha_alta": "2025-11-04",
+    "alarma_asociada": null
+  },
+  {
+    "policy_id": "VRG-PLZ-0021",
+    "ramo": "auto",
+    "estado": "activa",
+    "prima_mensual": 63.75,
+    "fecha_alta": "2024-10-01",
+    "alarma_asociada": null
+  },
+  {
+    "policy_id": "VRG-PLZ-0022",
+    "ramo": "auto",
+    "estado": "cancelada",
+    "prima_mensual": 63.78,
+    "fecha_alta": "2023-03-07",
+    "alarma_asociada": null
+  },
+  {
+    "policy_id": "VRG-PLZ-0023",
+    "ramo": "auto",
+    "estado": "activa",
+    "prima_mensual": 53.9,
+    "fecha_alta": "2023-12-14",
+    "alarma_asociada": null
+  },
+  {
+    "policy_id": "VRG-PLZ-0024",
+    "ramo": "auto",
+    "estado": "activa",
+    "prima_mensual": 74.3,
+    "fecha_alta": "2024-01-01",
+    "alarma_asociada": null
+  }
+]
