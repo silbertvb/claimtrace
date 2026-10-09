@@ -3,9 +3,13 @@
 - **Estado:** aceptada
 - **Fecha:** 2026-10-08
 - **Bloque:** 3. Datos de prueba
-- **Afecta a:** Bloque 4 (carga de cláusulas en la base e indexación), Bloque 5
-  (evaluación del agente), Bloque 6 (usuarios sintéticos), Bloque 10
-  (integración continua)
+- **Afecta a:** Bloque 4 (RAG de políticas: carga de cláusulas en la base e
+  indexación), Bloque 5 (agente de triage, que se evalúa contra las etiquetas),
+  Bloque 6 (acceso y roles: usuarios sintéticos), Bloque 10 (testing del stack
+  completo)
+- **Relacionada con:** ADR-003 (núcleo genérico y capa de seguros). Los nombres
+  de las etiquetas de este ADR se conservan; su correspondencia con los campos
+  genéricos de la decisión está en el ADR-003.
 
 ## Contexto
 El RAG y el agente de triage necesitan datos ficticios sobre los que trabajar y,
@@ -81,7 +85,8 @@ semilla fija (2026). El script valida los cuatro archivos antes de guardar.
   son pocos para sacar estadísticas finas; los umbrales de enrutado (150 € y
   1.000 €) son ficticios y, si cambian, hay que tocar a la vez
   `VRG-POL-DEV-2.1`, `2.2` y `2.3` y los casos `CLM-0001` a `0006`.
-- **Cuándo se revisaría:** si la evaluación del Bloque 5 revela etiquetas
-  ambiguas, si cambian los umbrales o el corpus, o si hace falta más volumen. En
-  el Bloque 10 la validación podría separarse en `scripts/validar_datos.py` para
-  ejecutarla en integración continua sin regenerar los datos.
+- **Cuándo se revisaría:** si la evaluación (recuperación en el Bloque 4,
+  enrutado y abstención en el Bloque 5) revela etiquetas ambiguas, si cambian los
+  umbrales o el corpus, o si hace falta más volumen. En el Bloque 10 (testing del
+  stack completo) la validación podría separarse en `scripts/validar_datos.py`
+  para ejecutarla en las pruebas automáticas sin regenerar los datos.

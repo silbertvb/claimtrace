@@ -1,7 +1,7 @@
 # Arquitectura de ClaimTrace
 
-Estado a 8 oct 2026 (Bloque 3: datos de prueba). Los elementos punteados están
-previstos y aún no se han construido.
+Estado a 9 oct 2026 (Bloque 3 cerrado; decisiones del Roadmap tomadas). Los
+elementos punteados están previstos y aún no se han construido.
 
 ## Servicios
 
@@ -11,10 +11,12 @@ flowchart LR
     n8n["n8n<br/>capa de entrada<br/>(Bloque 8, pendiente)"]
     api["api<br/>FastAPI · puerto 8000"]
     db[("db<br/>Postgres + pgvector<br/>puerto 5432")]
+    evaluacion["evaluation/<br/>caja negra por HTTP<br/>(desde el Bloque 4)"]
 
     usuario -.-> n8n
     n8n -.-> api
     api --> db
+    evaluacion -.-> api
 ```
 
 | Servicio | Función | Puerto en tu máquina | Puerto interno |
@@ -30,10 +32,33 @@ llega a la base por el nombre del servicio (`db`) y el puerto interno (5432).
 
 - Base vectorial: pgvector, ver [ADR-001](decisions/001-vector-db.md).
 - Formato de los datos de prueba y criterios de etiquetado, ver [ADR-002](decisions/002-test-data-format.md).
+- Núcleo genérico y capa de seguros, ver [ADR-003](decisions/003-generic-core.md).
+
+## Reglas de arquitectura
+
+Fijadas el 9 oct 2026 al decidir el Roadmap (detalle en el ADR-003).
+
+- **n8n y LangGraph.** Toda decisión y escalado viven en LangGraph y se registran
+  en la auditoría. n8n solo transporta: entrada (recibir la reclamación y llamar a
+  la API) y salida (notificar lo que la API ya decidió). n8n no lleva umbrales ni
+  reglas de negocio.
+- **Núcleo genérico.** Evidence, Decision, Approval, AuditEvent, Agent y AgentRun
+  no llevan campos de seguros. Lo propio del dominio (póliza, importe, ramo) va en
+  los datos de la reclamación y en metadatos. No se crea ninguna abstracción sin
+  un segundo caso que la justifique.
+- **Evaluación.** El código vive en `evaluation/`, fuera de `services/api/`, y
+  trata al sistema como caja negra por HTTP. Un bloque no se cierra sin su medida
+  (recuperación en el 4, enrutado y abstención en el 5, escalado y override en el
+  7, ejecución automática en el 10).
+- **Alcance del MVP.** Decide a qué equipo va cada reclamación (enrutado) o se
+  abstiene. La decisión de cobertura y la ingesta de PDF son ampliaciones
+  posteriores a la Fase 3 del Roadmap.
 
 ## Datos de prueba
 
 > **Todos los datos de este proyecto son ficticios.** VERÉGIDA Seguros S.A., sus cláusulas, pólizas, reclamaciones y usuarios no corresponden a ninguna empresa ni persona real. Las cifras del caso son hipótesis de trabajo.
+
+El dominio de estos datos es el de **seguros**: pertenecen a la capa de seguros y no al núcleo genérico (ADR-003). Los nombres de las etiquetas no se cambian en los JSON; su correspondencia con los campos genéricos de la decisión (`outcome`, `evidence_ids`, `abstained`, `abstain_reason`, `missing_fields`) está en el ADR-003 y la traducción se hace al cargarlos.
 
 ### Hipótesis del caso (ficticias)
 
@@ -197,3 +222,11 @@ Genera `polizas.json` y `usuarios.json` con la semilla 2026 (misma semilla, mism
 | `rol` | `analista` / `supervisor` | 2 analistas y 1 supervisor; sin rol de administrador |
 
 Sin contraseñas ni hashes en `data/`. Las credenciales de prueba se generan al sembrar la base, desde variables de entorno.
+
+## Deuda de dominio
+
+Lista de lo propio de seguros que se cuele en una pieza del núcleo genérico
+(ADR-003). Cada entrada: qué es, dónde está y qué habría que hacer. Será la lista
+de trabajo de la Fase 5 del Roadmap.
+
+Sin entradas a 9 oct 2026: todavía no hay esquema ni código del núcleo.

@@ -2,6 +2,26 @@
 Todos los cambios relevantes de ClaimTrace. Una entrada por día de trabajo.
 (La entrada más reciente va arriba.)
 
+## [Día 10] 2026-10-09 · Roadmap: decisiones y documentación de arquitectura
+
+### Añadido
+- `docs/roadmap.md`: versión pública del Roadmap, con fases, bloques, criterio de «hecha» por fase y puntos de decisión.
+- ADR-003: núcleo genérico y capa de seguros.
+- `docs/architecture.md`: secciones «Reglas de arquitectura» y «Deuda de dominio».
+- README: enlaces a la documentación y secciones «Alcance» y «Evaluación».
+
+### Cambiado
+- ADR-002: numeración de bloques alineada con el README (Bloque 5 = agente de triage, Bloque 10 = testing del stack completo) y referencia al ADR-003.
+- `docs/architecture.md`: estado a 9 oct y `evaluation/` en el diagrama.
+
+### Decisiones
+- Enrutado ahora y cobertura como ampliación posterior a la Fase 3.
+- Ingesta de PDF como ampliación posterior a la Fase 3, con punto de decisión escrito.
+- n8n en la Fase 4; solo transporta, las decisiones y el escalado viven en LangGraph.
+- Evaluación repartida por bloques, con código en `evaluation/` fuera de la API; un bloque no se cierra sin su medida.
+- Núcleo sin campos de seguros; los nombres de las etiquetas de los JSON se conservan.
+- Portfolio ahora; si la Fase 6 sale bien, se decide si continúa más allá.
+
 ## [Día 9] 2026-10-08 · Bloque 3: revisión, commit y documentación
 
 ### Añadido
@@ -54,7 +74,7 @@ Todos los cambios relevantes de ClaimTrace. Una entrada por día de trabajo.
 ## [Día 5] 2026-10-03 · Renombrado de la aseguradora ficticia
 
 ### Cambiado
-- La aseguradora ficticia pasa de "Shugo Seguros" a "VERÉGIDA Seguros S.A." (el nombre anterior coincidía con una empresa real de ciberseguridad).
+- La aseguradora ficticia pasa a llamarse "VERÉGIDA Seguros S.A." (el nombre anterior coincidía con una empresa real de ciberseguridad).
 - Prefijo de IDs de cláusula: `SHUGO-` pasa a `VRG-` (por ejemplo, `VRG-CG-HOG-4.2`).
 - Usuario de Postgres: `shugo` pasa a `claimtrace`. Obliga a recrear el volumen de la base; no había datos que conservar.
 
