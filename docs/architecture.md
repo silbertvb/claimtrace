@@ -33,6 +33,7 @@ llega a la base por el nombre del servicio (`db`) y el puerto interno (5432).
 - Base vectorial: pgvector, ver [ADR-001](decisions/001-vector-db.md).
 - Formato de los datos de prueba y criterios de etiquetado, ver [ADR-002](decisions/002-test-data-format.md).
 - Núcleo genérico y capa de seguros, ver [ADR-003](decisions/003-generic-core.md).
+- Índice completo de decisiones: [docs/decisions](decisions/README.md).
 
 ## Reglas de arquitectura
 
@@ -67,6 +68,14 @@ Fijadas el 9 oct 2026 al decidir el Roadmap (detalle en el ADR-003).
   (`evaluation/`) y el generador (`scripts/generar_datos.py`) se ejecutan en el
   equipo, sin cambios. Decidido el 12 oct 2026; el montaje se añade al compose
   en el Bloque 4.
+- **Pruebas.** Las pruebas del código viven en `services/api/tests/`. Las
+  medidas de calidad (`evaluation/`) no importan nada de `app/`: solo hablan
+  con la API por HTTP.
+- **Idioma de los nombres.** Código y archivos de infraestructura, en inglés
+  (`app/core/`, `docker-compose.yml`). La capa de seguros y los datos del
+  dominio, en español (`app/seguros/`, `clausulas.json`). Los scripts de
+  `scripts/` llevan nombre en español (`generar_datos.py`). Los documentos y
+  los comentarios están en español; los mensajes de commit, en inglés.
 
 ## Datos de prueba
 

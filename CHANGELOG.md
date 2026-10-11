@@ -7,6 +7,7 @@ Todos los cambios relevantes de ClaimTrace. Una entrada por día de trabajo.
 
 ### Añadido
 - `.gitattributes`: normaliza los finales de línea a LF para que Windows y WSL vean los mismos cambios.
+- `docs/decisions/README.md`: índice de los ADR.
 
 ### Cambiado
 - `README.md`: sección «Licencia» que indica que es un proyecto de portfolio con todos los derechos reservados y datos ficticios.
@@ -15,6 +16,8 @@ Todos los cambios relevantes de ClaimTrace. Una entrada por día de trabajo.
 ### Decisiones
 - Estructura de la API en paquete `app/` con capas bajo demanda; el núcleo no depende de la capa de seguros.
 - Los datos de prueba se montarán en la API en solo lectura (`./data:/data:ro`) y la indexación correrá dentro del contenedor; el cambio del compose se hará en el Bloque 4.
+- Pruebas del código en `services/api/tests/`, separadas de `evaluation/`.
+- Nombres: genérico en inglés; capa de seguros, datos y scripts en español.
 
 ## [Día 11] 2026-10-11 · Diagrama del flujo en el Roadmap
 
