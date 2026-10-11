@@ -2,6 +2,14 @@
 Todos los cambios relevantes de ClaimTrace. Una entrada por día de trabajo.
 (La entrada más reciente va arriba.)
 
+## [Día 11] 2026-10-11 · Diagrama del flujo en el Roadmap
+
+### Añadido
+- `docs/img/claimtrace-piramide-minto-flujo-e2e.png`: diagrama del flujo de extremo a extremo del MVP (Fases 0 a 3), con un caso ilustrativo ficticio. Es un diseño objetivo y está sujeto a revisión según se cierren los bloques.
+
+### Cambiado
+- `docs/roadmap.md`: incluye el diagrama con un pie que indica que es el flujo objetivo y qué está implementado.
+
 ## [Día 10] 2026-10-09 · Roadmap: decisiones y documentación de arquitectura
 
 ### Añadido

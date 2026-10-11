@@ -20,6 +20,10 @@ sistema no inventa: se abstiene y escala el caso a una persona.
 **Cadena que recorre cada caso:** reclamación → evidencia → decisión → revisión
 humana → auditoría.
 
+![Flujo de ClaimTrace de extremo a extremo (ejemplo ilustrativo)](img/claimtrace-piramide-minto-flujo-e2e.png)
+
+*Flujo objetivo del MVP (Fases 0 a 3), con un caso ilustrativo ficticio. Versión del 11 de octubre de 2026. A esa fecha solo están implementados los Bloques 1 a 3; el resto está previsto y el diagrama puede cambiar a medida que se cierren los bloques. Los cambios se registran en el [CHANGELOG](../CHANGELOG.md).*
+
 ## Alcance
 
 - **Qué decide el MVP:** a qué equipo va cada reclamación (`atencion_cliente`,
