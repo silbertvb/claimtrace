@@ -10,12 +10,12 @@ El RAG necesita almacenar y recuperar fragmentos de políticas con su ID de
 cláusula estable (por ejemplo `VRG-CG-HOG-4.2`). El registro de auditoría es
 solo-añadir y también debe guardarse en algún sitio. El corpus (los documentos
 que el RAG indexa: condiciones generales de Hogar y Auto y politicas de devolución,
-cancelación, fraude y reclamaciones formales) es pequeño (cientos de cláusulas),
+cancelación, fraude y reclamaciones formales) es pequeño (decenas de cláusulas),
 y el tiempo por bloque es limitado.
 
 ## Opciones consideradas
 1. **pgvector (extensión de Postgres):** una sola base para vectores y
-   auditoría, con transacciones y `JOIN` / menas funciones específicas de
+   auditoría, con transacciones y `JOIN` / menos funciones específicas de
    vectores que una base dedicada.
 2. **Qdrant:** base vectorial dedicada, muy buena en filtrado y escala / obliga
    a mantener además una Postgres para la auditoría, con dos conexiones y sin
