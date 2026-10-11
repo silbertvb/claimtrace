@@ -14,6 +14,7 @@ Todos los cambios relevantes de ClaimTrace. Una entrada por día de trabajo.
 
 ### Decisiones
 - Estructura de la API en paquete `app/` con capas bajo demanda; el núcleo no depende de la capa de seguros.
+- Los datos de prueba se montarán en la API en solo lectura (`./data:/data:ro`) y la indexación correrá dentro del contenedor; el cambio del compose se hará en el Bloque 4.
 
 ## [Día 11] 2026-10-11 · Diagrama del flujo en el Roadmap
 

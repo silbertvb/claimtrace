@@ -61,6 +61,12 @@ Fijadas el 9 oct 2026 al decidir el Roadmap (detalle en el ADR-003).
   núcleo genérico (`core/`) nunca importa de la capa de seguros (`seguros/`); la
   de seguros sí puede importar del núcleo. Las carpetas se crean cuando reciben
   su primer archivo.
+- **Datos de prueba y contenedor.** `data/` se monta en la API en solo lectura
+  (`./data:/data:ro`, con `DATA_DIR=/data`) y la indexación se ejecuta dentro
+  del contenedor, con el código en `services/api/app/`. La evaluación
+  (`evaluation/`) y el generador (`scripts/generar_datos.py`) se ejecutan en el
+  equipo, sin cambios. Decidido el 12 oct 2026; el montaje se añade al compose
+  en el Bloque 4.
 
 ## Datos de prueba
 
