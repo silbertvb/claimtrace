@@ -53,6 +53,14 @@ Fijadas el 9 oct 2026 al decidir el Roadmap (detalle en el ADR-003).
 - **Alcance del MVP.** Decide a qué equipo va cada reclamación (enrutado) o se
   abstiene. La decisión de cobertura y la ingesta de PDF son ampliaciones
   posteriores a la Fase 3 del Roadmap.
+- **Estructura del repositorio.** Cada servicio que se ejecuta en un contenedor
+  vive en `services/<nombre>/` (`api`, `db` y, en el Bloque 8, `n8n`). Lo que no
+  es un servicio va fuera: `scripts/` (utilidades), `evaluation/` (medidas) y
+  `data/` (datos de prueba).
+- **Capas de la API.** El código de la API vive en `services/api/app/`. El
+  núcleo genérico (`core/`) nunca importa de la capa de seguros (`seguros/`); la
+  de seguros sí puede importar del núcleo. Las carpetas se crean cuando reciben
+  su primer archivo.
 
 ## Datos de prueba
 

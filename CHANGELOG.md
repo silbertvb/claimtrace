@@ -10,6 +10,10 @@ Todos los cambios relevantes de ClaimTrace. Una entrada por día de trabajo.
 
 ### Cambiado
 - `README.md`: sección «Licencia» que indica que es un proyecto de portfolio con todos los derechos reservados y datos ficticios.
+- `services/api/main.py` pasa a `services/api/app/main.py` y el Dockerfile arranca `app.main:app`. Sin cambios de comportamiento: `/health` responde igual.
+
+### Decisiones
+- Estructura de la API en paquete `app/` con capas bajo demanda; el núcleo no depende de la capa de seguros.
 
 ## [Día 11] 2026-10-11 · Diagrama del flujo en el Roadmap
 
@@ -18,6 +22,7 @@ Todos los cambios relevantes de ClaimTrace. Una entrada por día de trabajo.
 
 ### Cambiado
 - `docs/roadmap.md`: incluye el diagrama con un pie que indica que es el flujo objetivo y qué está implementado.
+- `docs/decisions/001-vector-db.md`: corrección de erratas y del tamaño del corpus («decenas de cláusulas»).
 
 ## [Día 10] 2026-10-09 · Roadmap: decisiones y documentación de arquitectura
 
