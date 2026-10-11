@@ -21,4 +21,4 @@ USER appuser
 
 # Arranca el servidor. 0.0.0.0 es necesario DENTRO del contenedor; desde fuera
 # solo se llega por el puerto que publica el compose (127.0.0.1).
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
