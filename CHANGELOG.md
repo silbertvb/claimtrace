@@ -5,6 +5,9 @@ Todos los cambios relevantes de ClaimTrace. Una entrada por día de trabajo.
 
 ## [Día 12] 2026-10-12 · Revisión de estructura y licencia
 
+### Añadido
+- `.gitattributes`: normaliza los finales de línea a LF para que Windows y WSL vean los mismos cambios.
+
 ### Cambiado
 - `README.md`: sección «Licencia» que indica que es un proyecto de portfolio con todos los derechos reservados y datos ficticios.
 
