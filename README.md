@@ -31,3 +31,7 @@ El MVP decide a qué equipo va cada reclamación o se abstiene cuando faltan dat
 
 ## Evaluación
 Pendiente: las métricas (recuperación de cláusulas, enrutado y abstención) frente al conjunto de 33 casos etiquetados se publican aquí a partir del Bloque 5. Son indicativas, no estadísticas: las etiquetas las fija una sola persona.
+
+## Licencia
+
+Proyecto de portfolio. Todos los derechos reservados salvo que se indique lo contrario. Todos los datos son ficticios.

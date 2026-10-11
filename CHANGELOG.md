@@ -2,6 +2,12 @@
 Todos los cambios relevantes de ClaimTrace. Una entrada por día de trabajo.
 (La entrada más reciente va arriba.)
 
+
+## [Día 12] 2026-10-12 · Revisión de estructura y licencia
+
+### Cambiado
+- `README.md`: sección «Licencia» que indica que es un proyecto de portfolio con todos los derechos reservados y datos ficticios.
+
 ## [Día 11] 2026-10-11 · Diagrama del flujo en el Roadmap
 
 ### Añadido
