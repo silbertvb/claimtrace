@@ -2,8 +2,17 @@
 Todos los cambios relevantes de ClaimTrace. Una entrada por día de trabajo.
 (La entrada más reciente va arriba.)
 
+## 2026-10-17 · Bloque 2: entorno de desarrollo local
 
-## [Día 12] 2026-10-12 · Revisión de estructura y licencia
+### Añadido
+- Sección "Desarrollo local" en `docs/usage.md` (entorno virtual opcional).
+- Problema frecuente en `docs/usage.md`: error de `POSTGRES_PASSWORD` sin definir.
+- Comentario de contexto sobre el endpoint `/health` en `services/api/app/main.py`.
+
+### Cambiado
+- Los encabezados del changelog usan solo la fecha, sin el número de día.
+
+## 2026-10-12 · Revisión de estructura y licencia
 
 ### Añadido
 - `.gitattributes`: normaliza los finales de línea a LF para que Windows y WSL vean los mismos cambios.
@@ -19,7 +28,7 @@ Todos los cambios relevantes de ClaimTrace. Una entrada por día de trabajo.
 - Pruebas del código en `services/api/tests/`, separadas de `evaluation/`.
 - Nombres: genérico en inglés; capa de seguros, datos y scripts en español.
 
-## [Día 11] 2026-10-11 · Diagrama del flujo en el Roadmap
+## 2026-10-11 · Diagrama del flujo en el Roadmap
 
 ### Añadido
 - `docs/img/claimtrace-piramide-minto-flujo-e2e.png`: diagrama del flujo de extremo a extremo del MVP (Fases 0 a 3), con un caso ilustrativo ficticio. Es un diseño objetivo y está sujeto a revisión según se cierren los bloques.
@@ -28,7 +37,7 @@ Todos los cambios relevantes de ClaimTrace. Una entrada por día de trabajo.
 - `docs/roadmap.md`: incluye el diagrama con un pie que indica que es el flujo objetivo y qué está implementado.
 - `docs/decisions/001-vector-db.md`: corrección de erratas y del tamaño del corpus («decenas de cláusulas»).
 
-## [Día 10] 2026-10-09 · Roadmap: decisiones y documentación de arquitectura
+## 2026-10-09 · Roadmap: decisiones y documentación de arquitectura
 
 ### Añadido
 - `docs/roadmap.md`: versión pública del Roadmap, con fases, bloques, criterio de «hecha» por fase y puntos de decisión.
@@ -48,7 +57,7 @@ Todos los cambios relevantes de ClaimTrace. Una entrada por día de trabajo.
 - Núcleo sin campos de seguros; los nombres de las etiquetas de los JSON se conservan.
 - Portfolio ahora; si la Fase 6 sale bien, se decide si continúa más allá.
 
-## [Día 9] 2026-10-08 · Bloque 3: revisión, commit y documentación
+## 2026-10-08 · Bloque 3: revisión, commit y documentación
 
 ### Añadido
 - `scripts/generar_datos.py`, `data/polizas.json` (24 pólizas) y `data/usuarios.json` (3 usuarios) en el repositorio.
@@ -58,7 +67,7 @@ Todos los cambios relevantes de ClaimTrace. Una entrada por día de trabajo.
 - Revisión del script: comentarios de las constantes, espaciado y líneas de 120 caracteres como máximo (`pycodestyle` sin avisos). Mismos datos generados que antes (mismos hashes).
 - `docs/architecture.md`: estado a 8 oct, mención de `scripts/`, reglas de pólizas canceladas y de `policy_id` nulo, y sección del generador y la validación.
 
-## [Día 8] 2026-10-07 · Bloque 3: comprobaciones del generador de datos
+## 2026-10-07 · Bloque 3: comprobaciones del generador de datos
 
 ### Añadido
 - 12 comprobaciones de coherencia en `scripts/generar_datos.py`: importe de CLM-0004, fechas de alta, `policy_id` existentes, cláusulas existentes, destino y abstención, totales, cláusulas de fraude, pólizas canceladas, ramo de las cláusulas, recibos duplicados, campos requeridos e importe y mes en el texto.
@@ -75,7 +84,7 @@ Todos los cambios relevantes de ClaimTrace. Una entrada por día de trabajo.
 - Los campos vacíos deben coincidir con `campos_faltantes`, y el motivo es `campo_ausente` si y solo si falta algún campo requerido.
 - Formatos de cantidades: `importe` es un float con punto en el JSON; los textos usan el formato natural español y se reconcilian con `extraer_importes`.
 
-## [Día 7] 2026-10-06 · Bloque 3: generador de datos (primera parte)
+## 2026-10-06 · Bloque 3: generador de datos (primera parte)
 
 ### Añadido
 - `scripts/generar_datos.py` con `generar_polizas` (24 pólizas, semilla 2026), `generar_usuarios` (3 usuarios), `guardar_json` y `cargar_json`.
@@ -87,7 +96,7 @@ Todos los cambios relevantes de ClaimTrace. Una entrada por día de trabajo.
 ### Decisiones
 - La salida es determinista: misma semilla, mismo resultado (comprobado con hash).
 
-## [Día 6] 2026-10-05 · Bloque 3: corpus y reclamaciones
+## 2026-10-05 · Bloque 3: corpus y reclamaciones
 
 ### Añadido
 - `data/clausulas.json`: 42 cláusulas (hogar 10, auto 9, comunes 23).
@@ -97,7 +106,7 @@ Todos los cambios relevantes de ClaimTrace. Una entrada por día de trabajo.
 ### Cambiado
 - Revisión de etiquetas caso por caso: 13 reclamaciones corregidas y 7 criterios fijados.
 
-## [Día 5] 2026-10-03 · Renombrado de la aseguradora ficticia
+## 2026-10-03 · Renombrado de la aseguradora ficticia
 
 ### Cambiado
 - La aseguradora ficticia pasa a llamarse "VERÉGIDA Seguros S.A." (el nombre anterior coincidía con una empresa real de ciberseguridad).
@@ -105,14 +114,14 @@ Todos los cambios relevantes de ClaimTrace. Una entrada por día de trabajo.
 - Usuario de Postgres: `shugo` pasa a `claimtrace`. Obliga a recrear el volumen de la base; no había datos que conservar.
 
 
-## [Día 4] 2026-10-02 · Plan: ruta ampliada a 12 bloques
+## 2026-10-02 · Plan: ruta ampliada a 12 bloques
 
 - Se añade el Bloque 6 (acceso y roles) y el Bloque 9 (dashboard y métricas, opcional).
 - Renumeración de los bloques posteriores. Sin cambios de código.
 - Enfocado en añadir capa de seguridad
 
 
-## [Día 3] 2026-09-30 · Bloque 2: endurecimiento del stack base
+## 2026-09-30 · Bloque 2: endurecimiento del stack base
 
 ### Añadido
 - `services/api/.dockerignore`.
@@ -121,7 +130,7 @@ Todos los cambios relevantes de ClaimTrace. Una entrada por día de trabajo.
 - El compose exige `POSTGRES_PASSWORD`: si falta, no arranca.
 - La API corre como usuario sin privilegios (`appuser`) en vez de root.
 
-## [Día 2] 2026-09-29 · Bloque 2: Scaffolding Docker
+## 2026-09-29 · Bloque 2: Scaffolding Docker
 
 ### Añadido
 - `docker-compose.yml` con los servicios `db` (Postgres 16 + pgvector) y `api`

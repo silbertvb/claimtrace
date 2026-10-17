@@ -27,6 +27,9 @@ def _conectar() -> psycopg.Connection:
     )
 
 
+# PRIMER ENDPOINT DE CLAIMTRACE (Bloque 2/12).
+# Sirve para comprobar que la API arranca y que llega a Postgres.
+# Prueba: http://127.0.0.1:8000/docs -> GET /health -> Try it out -> Execute.
 @app.get("/health")
 def health() -> dict:
     """Comprueba que la API está viva y que llega a la base de datos.
