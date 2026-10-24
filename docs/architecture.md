@@ -50,6 +50,14 @@ Fijadas el 9 oct 2026 al decidir el Roadmap (detalle en el ADR-003).
   autorizada, distinta del agente, que guarda quién aprobó, cuándo y qué. Cerrar
   una reclamación exige el rol de supervisor. Se implementa en los Bloques 6 y
   7; hasta entonces es una regla de diseño y el código aún no la cumple.
+- **Seguridad desde el origen del riesgo.** Cada control se construye en el
+  bloque donde aparece el riesgo y se prueba al final. Los controles de
+  infraestructura (secretos, puertos, usuario del contenedor) vienen del Bloque 2.
+  Desde el Bloque 4, el texto recuperado y el texto del cliente son datos,
+  nunca instrucciones, y una cita solo es válida si su `clause_id` existe y fue
+  recuperado. Las pruebas adversarias usan un conjunto propio, separado de los 33
+  casos etiquetados, y se ejecutan en el Bloque 10. No se promete seguridad de
+  producción: el README dirá qué amenazas se prueban y cuáles no.
 - **Núcleo genérico.** Evidence, Decision, Approval, AuditEvent, Agent y AgentRun
   no llevan campos de seguros. Lo propio del dominio (póliza, importe, ramo) va en
   los datos de la reclamación y en metadatos. No se crea ninguna abstracción sin
