@@ -43,6 +43,13 @@ Fijadas el 9 oct 2026 al decidir el Roadmap (detalle en el ADR-003).
   en la auditoría. n8n solo transporta: entrada (recibir la reclamación y llamar a
   la API) y salida (notificar lo que la API ya decidió). n8n no lleva umbrales ni
   reglas de negocio.
+- **Propuesta y ejecución.** El agente solo propone: devuelve un destino (o una
+  abstención), las cláusulas que lo respaldan y su confianza. Ninguna acción con
+  efecto (cerrar una reclamación, enrutarla, notificar al cliente) se ejecuta
+  sin una aprobación registrada de una persona. La ejecución la hace una capa
+  autorizada, distinta del agente, que guarda quién aprobó, cuándo y qué. Cerrar
+  una reclamación exige el rol de supervisor. Se implementa en los Bloques 6 y
+  7; hasta entonces es una regla de diseño y el código aún no la cumple.
 - **Núcleo genérico.** Evidence, Decision, Approval, AuditEvent, Agent y AgentRun
   no llevan campos de seguros. Lo propio del dominio (póliza, importe, ramo) va en
   los datos de la reclamación y en metadatos. No se crea ninguna abstracción sin
