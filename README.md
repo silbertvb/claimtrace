@@ -1,6 +1,6 @@
 # ClaimTrace
 
-🚧 En construcción. Proyecto desarrollado como preparación para el rol de Forward Deployed Engineer.
+🚧 En construcción. Proyecto de portfolio, por bloques; el estado de cada uno está abajo.
 
 Agente de IA agentic para el triage de reclamaciones de una aseguradora ficticia (VERÉGIDA Seguros S.A.), con RAG sobre políticas y condiciones generales. La trazabilidad y la auditoría están integradas desde el diseño: cada decisión cita la política que la respalda, pasa por revisión humana registrada y, si faltan datos, el agente no decide y escala.
 
@@ -27,7 +27,7 @@ Hoja de ruta por fases y criterios de «hecha»: [docs/roadmap.md](docs/roadmap.
 Decisiones de diseño: [docs/decisions/](docs/decisions/). Arquitectura: [docs/architecture.md](docs/architecture.md).
 
 ## Alcance
-El MVP decide a qué equipo va cada reclamación o se abstiene cuando faltan datos. La decisión de cobertura y la ingesta de PDF están previstas como ampliación tras la Fase 3 del Roadmap.
+El MVP decide a qué equipo va cada **reclamación de cliente** (cobro indebido, disputa de recibo o cancelación de póliza) o se abstiene cuando faltan datos. No tramita siniestros ni decide si una póliza cubre un daño. La decisión de cobertura y la ingesta de PDF están previstas como ampliación tras la Fase 3 del Roadmap. Definiciones de los términos en el [glosario](docs/architecture.md#glosario).
 
 ## Evaluación
 Pendiente: las métricas (recuperación de cláusulas, enrutado y abstención) frente al conjunto de 33 casos etiquetados se publican aquí a partir del Bloque 5. Son indicativas, no estadísticas: las etiquetas las fija una sola persona.

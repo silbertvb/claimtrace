@@ -1,7 +1,7 @@
 # Arquitectura de ClaimTrace
 
-Estado a 9 oct 2026 (Bloque 3 cerrado; decisiones del Roadmap tomadas). Los
-elementos punteados están previstos y aún no se han construido.
+Estado: Bloque 3 cerrado. Los elementos punteados están previstos y aún no se
+han construido. Las fechas de cada decisión constan en el CHANGELOG y en los ADR.
 
 ## Servicios
 
@@ -51,9 +51,9 @@ Fijadas el 9 oct 2026 al decidir el Roadmap (detalle en el ADR-003).
   trata al sistema como caja negra por HTTP. Un bloque no se cierra sin su medida
   (recuperación en el 4, enrutado y abstención en el 5, escalado y override en el
   7, ejecución automática en el 10).
-- **Alcance del MVP.** Decide a qué equipo va cada reclamación (enrutado) o se
-  abstiene. La decisión de cobertura y la ingesta de PDF son ampliaciones
-  posteriores a la Fase 3 del Roadmap.
+- **Alcance del MVP.** Decide a qué equipo va cada reclamación de cliente
+  (enrutado) o se abstiene. No tramita siniestros. La decisión de cobertura y la
+  ingesta de PDF son ampliaciones posteriores a la Fase 3 del Roadmap.
 - **Estructura del repositorio.** Cada servicio que se ejecuta en un contenedor
   vive en `services/<nombre>/` (`api`, `db` y, en el Bloque 8, `n8n`). Lo que no
   es un servicio va fuera: `scripts/` (utilidades), `evaluation/` (medidas) y
@@ -76,6 +76,19 @@ Fijadas el 9 oct 2026 al decidir el Roadmap (detalle en el ADR-003).
   dominio, en español (`app/seguros/`, `clausulas.json`). Los scripts de
   `scripts/` llevan nombre en español (`generar_datos.py`). Los documentos y
   los comentarios están en español; los mensajes de commit, en inglés.
+
+## Glosario
+
+Términos tal como se usan en este proyecto.
+
+| Término | Significado en ClaimTrace |
+|---|---|
+| Reclamación | Queja de un cliente sobre un cobro, un recibo o una baja de póliza. Es lo que entra al sistema (`CLM-nnnn`). La entidad `Claim` del código y del Roadmap corresponde a esto. |
+| Siniestro | Hecho dañoso (robo, incendio, accidente) por el que el asegurado pide una prestación a su póliza. ClaimTrace **no lo tramita**; el robo en la vivienda está fuera de alcance. |
+| Triage | Clasificar la reclamación y proponer su destino, con las cláusulas que lo justifican. |
+| Enrutado | Elegir el equipo de destino: `atencion_cliente`, `reclamaciones_formales`, `fraude` o `compliance_revision`. |
+| Abstención | Cuando faltan datos obligatorios o no hay cláusula relevante, el agente no decide y escala a una persona. |
+| Cobertura | Decidir si una póliza cubre un siniestro. No es parte del MVP: ampliación posterior a la Fase 3. |
 
 ## Datos de prueba
 
