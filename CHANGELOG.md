@@ -8,6 +8,8 @@ Todos los cambios relevantes de ClaimTrace. Una entrada por día de trabajo.
 - Regla «propuesta y ejecución»: el agente solo propone y cerrar exige aprobación registrada (`4a44d41`).
 - Regla «seguridad desde el origen del riesgo» (`2c6a0ae`).
 - La Fase 3 se cierra al terminar el Bloque 7; las pruebas adversarias se miden allí y se automatizan en el Bloque 10. Roadmap alineado.
+- El Bloque 4 incluye una prueba de cambio de versión: modificar una cláusula cambia su hash y reindexar actualiza el registro sin duplicarlo.
+- Nombre del Bloque 10 unificado como «Testing del stack Docker completo» en README y Roadmap.
 
 ## 2026-10-17 · Bloque 2: entorno de desarrollo local
 

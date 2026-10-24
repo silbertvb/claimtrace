@@ -65,11 +65,11 @@ como caja negra por HTTP). Un bloque no se cierra sin su medida.
 
 | Bloque | Medida |
 |---|---|
-| 4 · RAG | Calidad de recuperación frente a las cláusulas esperadas |
+| 4 · RAG | Calidad de recuperación frente a las cláusulas esperadas; reindexar tras cambiar una cláusula actualiza su registro (el hash cambia) sin duplicarlo |
 | 5 · Agente de triage | Precisión de enrutado y de abstención; el agente solo afirma lo que sostiene la evidencia |
 | 6 · Acceso y roles | Pruebas 401/403 y rol revalidado en la base para las acciones sensibles |
 | 7 · LangGraph y trazabilidad | Tasa de escalado y de decisiones corregidas por una persona; pruebas adversarias (inyección en el texto, información contradictoria, preguntas fuera de alcance) con su medida |
-| 10 · Testing del stack | La evaluación, incluidas las pruebas adversarias, se ejecuta de forma automática |
+| 10 · Testing del stack Docker completo | La evaluación, incluidas las pruebas adversarias, se ejecuta de forma automática |
 
 ## Reglas de arquitectura
 
