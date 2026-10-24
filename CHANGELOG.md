@@ -2,6 +2,13 @@
 Todos los cambios relevantes de ClaimTrace. Una entrada por día de trabajo.
 (La entrada más reciente va arriba.)
 
+## 2026-10-24
+
+- Alcance aclarado: reclamaciones de clientes, no siniestros; glosario en `architecture.md` (`fc874fc`).
+- Regla «propuesta y ejecución»: el agente solo propone y cerrar exige aprobación registrada (`4a44d41`).
+- Regla «seguridad desde el origen del riesgo» (`2c6a0ae`).
+- La Fase 3 se cierra al terminar el Bloque 7; las pruebas adversarias se miden allí y se automatizan en el Bloque 10. Roadmap alineado.
+
 ## 2026-10-17 · Bloque 2: entorno de desarrollo local
 
 ### Añadido

@@ -37,7 +37,7 @@ llega a la base por el nombre del servicio (`db`) y el puerto interno (5432).
 
 ## Reglas de arquitectura
 
-Fijadas el 9 oct 2026 al decidir el Roadmap (detalle en el ADR-003).
+Fijadas entre el 9 y el 24 oct 2026 (el detalle de cada una está en el ADR o en el CHANGELOG).
 
 - **n8n y LangGraph.** Toda decisión y escalado viven en LangGraph y se registran
   en la auditoría. n8n solo transporta: entrada (recibir la reclamación y llamar a
@@ -51,13 +51,14 @@ Fijadas el 9 oct 2026 al decidir el Roadmap (detalle en el ADR-003).
   una reclamación exige el rol de supervisor. Se implementa en los Bloques 6 y
   7; hasta entonces es una regla de diseño y el código aún no la cumple.
 - **Seguridad desde el origen del riesgo.** Cada control se construye en el
-  bloque donde aparece el riesgo y se prueba al final. Los controles de
-  infraestructura (secretos, puertos, usuario del contenedor) vienen del Bloque 2.
-  Desde el Bloque 4, el texto recuperado y el texto del cliente son datos,
-  nunca instrucciones, y una cita solo es válida si su `clause_id` existe y fue
-  recuperado. Las pruebas adversarias usan un conjunto propio, separado de los 33
-  casos etiquetados, y se ejecutan en el Bloque 10. No se promete seguridad de
-  producción: el README dirá qué amenazas se prueban y cuáles no.
+  bloque donde aparece el riesgo. Los controles de infraestructura (secretos,
+  puertos, usuario del contenedor) vienen del Bloque 2. Desde el Bloque 4, el
+  texto recuperado y el texto del cliente son datos, nunca instrucciones, y una
+  cita solo es válida si su `clause_id` existe y fue recuperado. Las pruebas
+  adversarias usan un conjunto propio, separado de los 33 casos etiquetados; se
+  miden en el Bloque 7 y se ejecutan de forma automática en el 10. No se
+  promete seguridad de producción: el README dirá qué amenazas se prueban y
+  cuáles no.
 - **Núcleo genérico.** Evidence, Decision, Approval, AuditEvent, Agent y AgentRun
   no llevan campos de seguros. Lo propio del dominio (póliza, importe, ramo) va en
   los datos de la reclamación y en metadatos. No se crea ninguna abstracción sin
@@ -280,4 +281,4 @@ Lista de lo propio de seguros que se cuele en una pieza del núcleo genérico
 (ADR-003). Cada entrada: qué es, dónde está y qué habría que hacer. Será la lista
 de trabajo de la Fase 5 del Roadmap.
 
-Sin entradas a 9 oct 2026: todavía no hay esquema ni código del núcleo.
+Sin entradas: todavía no hay esquema ni código del núcleo.
