@@ -30,7 +30,7 @@ Decisiones de diseño: [docs/decisions/](docs/decisions/). Arquitectura: [docs/a
 El MVP decide a qué equipo va cada **reclamación de cliente** (cobro indebido, disputa de recibo o cancelación de póliza) o se abstiene cuando faltan datos. No tramita siniestros ni decide si una póliza cubre un daño. La decisión de cobertura y la ingesta de PDF están previstas como ampliación tras la Fase 3 del Roadmap. Definiciones de los términos en el [glosario](docs/architecture.md#glosario).
 
 ## Evaluación
-Pendiente: las métricas (recuperación de cláusulas, enrutado y abstención) frente al conjunto de 33 casos etiquetados se publican aquí a partir del Bloque 5. Son indicativas, no estadísticas: las etiquetas las fija una sola persona.
+Pendiente: las métricas (recuperación de cláusulas, enrutado y abstención) frente al conjunto de 33 casos etiquetados se publican aquí a partir del Bloque 4. Son indicativas, no estadísticas: las etiquetas las fija una sola persona.
 
 ## Licencia
 

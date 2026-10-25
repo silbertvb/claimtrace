@@ -118,6 +118,8 @@ El dominio de estos datos es el de **seguros**: pertenecen a la capa de seguros 
 - Unas 800 horas al mes de triage manual.
 - Un 12 % de reclamaciones mal enrutadas.
 
+Son supuestos de partida para dimensionar el caso, no datos medidos ni procedentes de un cliente real. Las métricas de evaluación del proyecto (recuperación, enrutado y abstención) no dependen de ellas y se calculan solo sobre los 33 casos etiquetados.
+
 ### Formato
 
 JSON, un archivo por entidad en `data/`. Los campos vacíos se escriben como `null`, de modo que los datos cargan directamente en Postgres en el Bloque 4.
