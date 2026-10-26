@@ -1,0 +1,80 @@
+{
+  "regla": "Estrato = motivo_abstencion si hay abstencion, destino_esperado si no. Orden dentro del estrato: SHA-256 de claim_id, ascendente. Desarrollo = los primeros (4n + 3) // 6 de cada estrato; el resto, evaluacion. Casos de regresion apartados.",
+  "recuentos": {
+    "desarrollo": 20,
+    "evaluacion": 9,
+    "regresion": 4
+  },
+  "estratos": {
+    "atencion_cliente": {
+      "n": 9,
+      "desarrollo": 6,
+      "evaluacion": 3
+    },
+    "campo_ausente": {
+      "n": 6,
+      "desarrollo": 4,
+      "evaluacion": 2
+    },
+    "compliance_revision": {
+      "n": 3,
+      "desarrollo": 2,
+      "evaluacion": 1
+    },
+    "fraude": {
+      "n": 4,
+      "desarrollo": 3,
+      "evaluacion": 1
+    },
+    "reclamaciones_formales": {
+      "n": 4,
+      "desarrollo": 3,
+      "evaluacion": 1
+    },
+    "sin_clausula_relevante": {
+      "n": 2,
+      "desarrollo": 1,
+      "evaluacion": 1
+    },
+    "tipo_no_reconocible": {
+      "n": 1,
+      "desarrollo": 1,
+      "evaluacion": 0
+    }
+  },
+  "casos": {
+    "CLM-0001": "desarrollo",
+    "CLM-0002": "evaluacion",
+    "CLM-0003": "evaluacion",
+    "CLM-0004": "desarrollo",
+    "CLM-0005": "desarrollo",
+    "CLM-0006": "desarrollo",
+    "CLM-0007": "evaluacion",
+    "CLM-0008": "evaluacion",
+    "CLM-0009": "desarrollo",
+    "CLM-0010": "desarrollo",
+    "CLM-0011": "regresion",
+    "CLM-0012": "regresion",
+    "CLM-0013": "regresion",
+    "CLM-0014": "desarrollo",
+    "CLM-0015": "desarrollo",
+    "CLM-0016": "regresion",
+    "CLM-0017": "desarrollo",
+    "CLM-0018": "desarrollo",
+    "CLM-0019": "desarrollo",
+    "CLM-0020": "desarrollo",
+    "CLM-0021": "desarrollo",
+    "CLM-0022": "desarrollo",
+    "CLM-0023": "evaluacion",
+    "CLM-0024": "desarrollo",
+    "CLM-0025": "desarrollo",
+    "CLM-0026": "evaluacion",
+    "CLM-0027": "evaluacion",
+    "CLM-0028": "desarrollo",
+    "CLM-0029": "desarrollo",
+    "CLM-0030": "evaluacion",
+    "CLM-0031": "desarrollo",
+    "CLM-0032": "evaluacion",
+    "CLM-0033": "desarrollo"
+  }
+}
