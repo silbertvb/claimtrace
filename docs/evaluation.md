@@ -22,12 +22,26 @@ El código de evaluación vive en `evaluation/`, fuera de `services/api/`, y tra
 
 ## Partición desarrollo/evaluación
 
-Se fija en el Bloque 4, **antes de elegir k y el modelo** y antes de medir:
+Se fija en el Bloque 4, **antes de elegir k y el modelo** y antes de medir. El reparto lo genera `evaluation/particionar.py` y queda en `evaluation/particion.json`; se fijó el 26 oct 2026 en el commit `130b144`.
 
-- Aproximadamente dos tercios para desarrollo y un tercio para evaluación, estratificado por destino y por tipo de abstención.
-- Determinista, a partir de un hash del `claim_id`, y commiteado antes de medir.
-- `CLM-0011`, `CLM-0012`, `CLM-0013` Y `CLM-0016` quedan fuera del reparto y se usan como pruebas de regresión del filtro por ramo.
-- Se publican los recuentos de cada grupo.
+- **Proporción:** aproximadamente dos tercios para desarrollo y un tercio para evaluación.
+- **Estratificado:** el reparto se hace por separado dentro de cada grupo (estrato). El estrato es el destino esperado en las reclamaciones completas y el motivo de abstención en las de abstención.
+- **Determinista:** dentro de cada estrato, los casos se ordenan por el SHA-256 de su `claim_id` (en hexadecimal, orden ascendente). Los primeros `(4n + 3) // 6` van a desarrollo, siendo n el tamaño del estrato, y el resto a evaluación. Esa fórmula es dos tercios de n redondeados con enteros.
+- **Estratos de un solo caso:** van a desarrollo. Por eso `tipo_no_reconocible` no tiene ningún caso de evaluación.
+- **Regresión:** `CLM-0011`, `CLM-0012`, `CLM-0013` y `CLM-0016` quedan fuera del reparto y se usan como pruebas de regresión del filtro por ramo.
+
+Recuentos (29 casos repartidos más 4 de regresión):
+
+| Estrato | n | Desarrollo | Evaluación |
+|---|---|---|---|
+| atencion_cliente | 9 | 6 | 3 |
+| reclamaciones_formales | 4 | 3 | 1 |
+| compliance_revision | 3 | 2 | 1 |
+| fraude | 4 | 3 | 1 |
+| campo_ausente | 6 | 4 | 2 |
+| sin_clausula_relevante | 2 | 1 | 1 |
+| tipo_no_reconocible | 1 | 1 | 0 |
+| **Total** | **29** | **20** | **9** |
 
 Los parámetros que se eligen con los casos de desarrollo son tres:
 
@@ -54,4 +68,5 @@ Usan un conjunto propio, separado de los 33 casos, para no alterar estas métric
 - Una sola persona etiqueta los datos, y una segunda persona revisaría una muestra antes de cualquier uso fuera del portfolio.
 - Los datos son ficticios y pequeños, así que no permiten afirmar un rendimiento general.
 - No se afirma cumplimiento de ninguna norma: antes habría que verificar cuál aplica.
-- El caso de cobertura (CT-TEST-034) aún no existe en los datos.
+- El caso de cobertura aún no existe en los datos.
+- La evaluación tiene solo 9 casos y varios estratos aportan uno solo, así que un acierto o un fallo mueve mucho la métrica.
