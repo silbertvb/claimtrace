@@ -14,7 +14,7 @@ reutilizarse en otros dominios. Es una hipótesis aún no contrastada con el
 mercado. Lo que sí es verificable hoy es lo que fija el repositorio: los datos
 del Bloque 3 son de **enrutado** (a qué equipo va cada reclamación, o
 abstención), no de cobertura, y todavía no existe ningún esquema, modelo ni
-código de negocio (`services/api/main.py` solo expone `/health`).
+código de negocio (`services/api/app/main.py` solo expone `/health`).
 
 Eso permite decidir la forma del núcleo antes de escribirlo. Si lo propio de
 seguros (póliza, importe, ramo) se mezcla con las piezas de confianza, la Fase 5
