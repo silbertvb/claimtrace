@@ -92,6 +92,10 @@ Fijadas entre el 9 y el 24 oct 2026 (el detalle de cada una está en el ADR o en
   dominio, en español (`app/seguros/`, `clausulas.json`). Los scripts de
   `scripts/` llevan nombre en español (`generar_datos.py`). Los documentos y
   los comentarios están en español; los mensajes de commit, en inglés.
+- **Una sola versión de Python (ADR-004).** La de referencia es la del
+  `Dockerfile` (hoy 3.13). El `.venv` local usa la misma versión menor; el
+  parche puede diferir. Si cambia una, cambia la otra en el mismo commit.
+  Las dependencias directas se fijan con versión exacta.
 
 ## Glosario
 

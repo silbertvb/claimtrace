@@ -35,25 +35,39 @@ Para pararlo: `docker compose down`. Con `docker compose down -v` se borran tamb
 
 ## Desarrollo local (opcional)
 
-La API se ejecuta siempre en Docker. El entorno virtual solo sirve para que el
-editor reconozca las dependencias (autocompletado y avisos de VS Code). El
-contenedor usa Python 3.12; para el editor basta con una versión reciente de
-Python en tu equipo, no hace falta que coincida. Si la instalación falla con tu
-versión, prueba con una más cercana a la 3.12.
+La API se ejecuta siempre en Docker. El entorno virtual sirve para que el
+editor reconozca las dependencias (autocompletado y avisos de VS Code) y para
+ejecutar en tu equipo las pruebas y los scripts. Debe usar la **misma versión
+de Python que el contenedor: 3.13** (la del `Dockerfile`). El parche puede
+diferir, porque la imagen usa la etiqueta `3.13-slim`. Si cambias la versión
+de uno, cambia la del otro en el mismo commit.
 
-1. Crea el entorno e instala las mismas dependencias que usa la imagen:
+1. Comprueba que tienes Python 3.13 instalado:
    ```powershell
-      python -m venv .venv
-      .\.venv\Scripts\python.exe -m pip install -r services\api\requirements.txt
+   py -0p
    ```
-   (En Linux o macOS: `python3 -m venv .venv` y
+   Si no aparece, instálalo desde python.org (puede convivir con otras versiones).
+
+2. Crea el entorno con esa versión e instala las mismas dependencias que usa la imagen:
+   ```powershell
+   py -3.13 -m venv .venv
+   .\.venv\Scripts\python.exe -m pip install -r services\api\requirements.txt
+   ```
+   (En Linux o macOS: `python3.13 -m venv .venv` y
    `.venv/bin/python -m pip install -r services/api/requirements.txt`).
+   Si ya tenías un `.venv` con otra versión, desactívalo (`deactivate`),
+   cierra las terminales que lo usan, bórralo
+   (`Remove-Item -Recurse -Force .venv`) y créalo de nuevo.
 
-2. En VS Code: `Ctrl + Shift + P`, **Python: Select Interpreter** y elige el de `.venv`.
+3. Comprueba la versión: `.\.venv\Scripts\python.exe --version` debe mostrar 3.13.x.
 
-Si cambias `services/api/requirements.txt`, repite el `pip install` y
-reconstruye la imagen con `docker compose up -d --build api`, para que el editor
-y el contenedor usen las mismas versiones.
+4. En VS Code: `Ctrl + Shift + P`, **Python: Select Interpreter** y elige el de `.venv`.
+
+Las dependencias directas están fijadas con `==` en `requirements.txt`; las
+indirectas no, así que pueden diferir con el tiempo. Si cambias
+`services/api/requirements.txt`, repite el `pip install` y reconstruye la
+imagen con `docker compose up -d --build api`, para que el editor y el
+contenedor usen las mismas versiones.
 
 ## Problemas frecuentes
 
