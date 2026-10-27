@@ -33,6 +33,7 @@ llega a la base por el nombre del servicio (`db`) y el puerto interno (5432).
 - Base vectorial: pgvector, ver [ADR-001](decisions/001-vector-db.md).
 - Formato de los datos de prueba y criterios de etiquetado, ver [ADR-002](decisions/002-test-data-format.md).
 - Núcleo genérico y capa de seguros, ver [ADR-003](decisions/003-generic-core.md).
+- Decisiones de recuperación del Bloque 4 (RAG), ver [ADR-004](decisions/004-rag-retrieval.md).
 - Índice completo de decisiones: [docs/decisions](decisions/README.md).
 
 ## Reglas de arquitectura
@@ -96,6 +97,11 @@ Fijadas entre el 9 y el 24 oct 2026 (el detalle de cada una está en el ADR o en
   `Dockerfile` (hoy 3.13). El `.venv` local usa la misma versión menor; el
   parche puede diferir. Si cambia una, cambia la otra en el mismo commit.
   Las dependencias directas se fijan con versión exacta.
+- **Puertos y adaptadores (ADR-004).** Un puerto se justifica si oculta un
+  sistema externo y se necesita un falso para probar; el falso cuenta como
+  segundo caso. La regla de «ninguna abstracción sin segundo caso» del núcleo
+  genérico se refiere a abstracciones de dominio (segundo dominio), no a estos
+  puertos.
 
 ## Glosario
 
