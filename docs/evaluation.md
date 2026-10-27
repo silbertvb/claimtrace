@@ -70,3 +70,7 @@ Usan un conjunto propio, separado de los 33 casos, para no alterar estas métric
 - No se afirma cumplimiento de ninguna norma: antes habría que verificar cuál aplica.
 - El caso de cobertura aún no existe en los datos.
 - La evaluación tiene solo 9 casos y varios estratos aportan uno solo, así que un acierto o un fallo mueve mucho la métrica.
+- Una sola etiqueta por caso: `CAN-2.1` remite a `DEV-3.2` para los cobros posteriores a la baja.
+  Si la recuperación devuelve la otra, es correcta en el fondo pero cuenta como fallo.
+- Solo hay un caso `sin_clausula_relevante` en desarrollo y otro en evaluación: el umbral de abstención solo se puede comprobar,
+  no calibrar con rigor estadístico.
