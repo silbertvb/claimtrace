@@ -1,3 +1,5 @@
-fastapi>=0.115,<1
-uvicorn[standard]>=0.30,<1
-psycopg[binary]>=3.2,<4
+# Dependencias directas con versión exacta (ADR-004, decisión 7b).
+# Las indirectas no se fijan: limitación conocida.
+fastapi==0.143.3
+uvicorn[standard]==0.54.0
+psycopg[binary]==3.3.6
