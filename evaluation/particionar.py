@@ -46,14 +46,23 @@ def n_desarrollo(n):
 
 
 def main():
+    # AVISO: el reparto ya esta fijado y commiteado antes de medir.
+    # Cambiar REGRESION, la formula, el hash o los datos cambia el resultado e invalida
+    # lo documentado en docs/evaluation.md. No tocar sin decision explicita.
+
     with open(ENTRADA, encoding="utf-8") as f:
         casos = json.load(f)
 
+    # Si falta algun caso de regresion (por ejemplo, tras regenerar los datos)
+    # se aborta: el reparto ya no seria el acordado.
     ids = {c["claim_id"] for c in casos}
     faltan = [i for i in REGRESION if i not in ids]
     if faltan:
         raise ValueError(f"Casos de regresion que no existen en los datos: {faltan}")
 
+    # grupos: claim_id -> "desarrollo" | "evaluacion" | "regresion".
+    # se rellena aqui (regresion) y en el bucle de abajo (los demas).
+    # por_estrato: nombre del estrato -> claim_id pendientes de repartir.
     grupos = {}
     por_estrato = defaultdict(list)
     for caso in casos:
@@ -62,6 +71,10 @@ def main():
         else:
             por_estrato[estrato(caso)].append(caso["claim_id"])
 
+    # Cada estrato se reparte por separado (eso lo hace "estratificado").
+    # Ordenar por SHA-256 da un orden que parece aleatorio pero es siempre el mismo.
+    # Los primeros `corte` van a desarrollo y el resto a evaluación.
+    # detalle: recuento por estrato, para el JSON y el resumen final.
     detalle = {}
     for nombre in sorted(por_estrato):
         ordenados = sorted(por_estrato[nombre], key=huella)
@@ -77,6 +90,7 @@ def main():
         }
 
     # Comprobacion: todos los casos tienen grupo y la suma cuadra.
+    # Si el assert falla hay un caso sin repartir y no se escribe nada.
     assert len(grupos) == len(casos), "Algun caso se quedo sin grupo"
 
     recuentos = {
@@ -84,6 +98,8 @@ def main():
         for g in ("desarrollo", "evaluacion", "regresion")
     }
 
+    # "casos" va ordenado por claim_id para que el archivo sea siempre igual
+    # (y git no muestre diferencias falsas)
     resultado = {
         "regla": (
             "Estrato = motivo_abstencion si hay abstencion, destino_esperado si no. "
