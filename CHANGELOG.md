@@ -2,6 +2,34 @@
 Todos los cambios relevantes de ClaimTrace. Una entrada por día de trabajo.
 (La entrada más reciente va arriba.)
 
+## 2026-10-27 · Bloque 4: entorno y decisiones de recuperación
+
+### Añadido
+- ADR-004: decisiones de diseño de la recuperación (RAG, parte 1), con índices en `architecture.md` y `decisions/README.md` (`2f2c38e`).
+- Limitaciones de las etiquetas y del umbral de abstención en `docs/evaluation.md` (`282bffa`).
+
+### Cambiado
+- La imagen de la API pasa a `python:3.13-slim` y las dependencias directas se fijan con versión exacta (`30b7f81`).
+- `docs/usage.md` y la regla de Python en `architecture.md` se alinean con la versión del contenedor, 3.13 (`3b0249b`).
+- Comentarios explicativos en `evaluation/particionar.py` (`99c7358`).
+
+### Decisiones
+- Ver [ADR-004](docs/decisions/004-rag-retrieval.md): D1 a D8 y D7b.
+
+## 2026-10-26 · Bloque 4: partición de las reclamaciones
+
+### Añadido
+- Partición estratificada de las 33 reclamaciones: 20 de desarrollo, 9 de evaluación y 4 de regresión (`130b144`).
+- Reglas de la partición documentadas en `docs/evaluation.md` (`24d1dfb`).
+
+### Cambiado
+- Corregida la ruta de `main.py` en el ADR-003 (`001ad43`).
+
+## 2026-10-25
+
+### Cambiado
+- Cifras del caso marcadas como supuestos; definidos los datos de evaluación y la partición (`f4b50ac`).
+
 ## 2026-10-24
 
 - Alcance aclarado: reclamaciones de clientes, no siniestros; glosario en `architecture.md` (`fc874fc`).
