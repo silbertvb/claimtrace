@@ -2,6 +2,19 @@
 Todos los cambios relevantes de ClaimTrace. Una entrada por día de trabajo.
 (La entrada más reciente va arriba.)
 
+## 2026-10-28 · Bloque 4: migraciones y esquema
+
+### Añadido
+- `app/core/db.py`, con `_conectar()` movida desde `main.py` para que el ejecutor y el recuperador no dependan del punto de entrada (`585948d`).
+
+### Cambiado
+- Entradas del 25 al 27 oct que faltaban en este archivo (`cd221e8`).
+- ADR-004: migraciones concretadas en D3 (`2c14f61`); esquema de `clausulas`, versión de pgvector (0.8.6) y confirmación de `app/core/` (`<HASH>`).
+
+### Decisiones
+- Ver [ADR-004](docs/decisions/004-rag-retrieval.md), D3 y D5.
+
+
 ## 2026-10-27 · Bloque 4: entorno y decisiones de recuperación
 
 ### Añadido
