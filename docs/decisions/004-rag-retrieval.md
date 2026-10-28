@@ -64,8 +64,9 @@ obligatoria, no una preferencia de orden: `HOG-7.1`/`AUTO-7.1` y
   fondo pero contaría como fallo. Las etiquetas no se cambian; se anota en
   `docs/evaluation.md`.
 - **Casos de evaluación:** se miran después, una sola vez, para informar.
-- **Sin anotar:** la versión de pgvector (la imagen `pgvector/pgvector:pg16`
-  es una etiqueta flotante). Pendiente de `\dx vector`.
+- **Versión de pgvector:** 0.8.6, comprobada el 28 oct con `\dx vector` (la
+  imagen `pgvector/pgvector:pg16` es una etiqueta flotante, así que la versión
+  puede cambiar al reconstruirla).
 
 ### D3. Esquema y migraciones
 - **Decisión:** migraciones SQL numeradas (`NNN-descripcion.sql`) en una
@@ -94,6 +95,24 @@ obligatoria, no una preferencia de orden: `HOG-7.1`/`AUTO-7.1` y
       el arranque si se edita una migración ya aplicada. Cada migración se
       aplica en una transacción junto con su fila de registro. Es la única tabla
       creada así; el esquema de negocio va siempre en migraciones.
+    - **Esquema de `clausulas` (concretado el 28 oct):**
+      - **Qué se embebe y se hashea:** la cadena `titulo + "\n" + texto`,
+        exactamente la que se envía al modelo. `titulo` y `texto` se guardan
+        también tal cual, para mostrarlos y citarlos. Cambiar el separador cambia
+        todos los hashes y obliga a reindexar. Se descartó añadir `ramo` o
+        `documento` a la cadena: haría distintos los vectores de `HOG-7.1` y
+        `AUTO-7.1` (textos y títulos idénticos), que es lo que justifica el
+        filtro `WHERE` obligatorio.
+      - **Columnas:** `id` (identidad, clave primaria), `source_id`
+        (`text UNIQUE NOT NULL`, el `clause_id` completo del JSON), `titulo`,
+        `texto`, `metadatos` (`jsonb` con `ramo` y `documento`), `hash_contenido`,
+        `embedding vector(1536)` y, por fila, `modelo`, `dimensiones` e
+        `indexada_en`.
+      - **Bitácora:** la tabla `indexaciones` (hash del corpus, recuento y fecha
+        de cada pasada) irá en una migración `002`, cuando exista el indexador. La
+        `001` solo crea `clausulas`.
+      - **Filtro por ramo:** `metadatos->>'ramo' = ANY(...)`, sin índice (42
+        filas).
 - **Descartadas:** scripts en `init/` recreando el volumen (cada cambio
   borraría datos, inaceptable cuando haya registro de auditoría),
   `CREATE TABLE IF NOT EXISTS` al arrancar (no sabe modificar ni deja
@@ -147,8 +166,8 @@ obligatoria, no una preferencia de orden: `HOG-7.1`/`AUTO-7.1` y
   devuelve (`source_id`, puntuación, hash, metadatos y umbral aplicado) basta
   para auditar y para medir desde fuera.
 - **Estructura prevista:** puertos y adaptadores en `app/core/`; la carga y
-  la traducción póliza → filtro en `app/seguros/`. Se confirma al crear el
-  primer archivo.
+  la traducción póliza → filtro en `app/seguros/`. Confirmada el 28 oct al
+  crear el primer archivo, `app/core/db.py` (`585948d`, con `_conectar()`).
 
 ### D6. LangChain
 - **Decisión:** el Bloque 4 no usa LangChain: `psycopg` y el SDK de OpenAI
@@ -235,11 +254,10 @@ obligatoria, no una preferencia de orden: `HOG-7.1`/`AUTO-7.1` y
   de desarrollo coincide con el de ejecución; no se añaden dependencias
   innecesarias.
 - **Negativas / riesgos:** dos interfaces y sus adaptadores más; el
-  superusuario sigue en uso hasta el Bloque 7; la versión de pgvector no está
-  anotada; las dependencias indirectas flotan; el umbral no se puede calibrar
-  con rigor con un solo caso de abstención por similitud; con una única
-  etiqueta por caso, una cláusula equivalente cuenta como fallo; la
-  comparación con `3-large` está pendiente.
+  superusuario sigue en uso hasta el Bloque 7; las dependencias indirectas
+  flotan; el umbral no se puede calibrar con rigor con un solo caso de
+  abstención por similitud; con una única etiqueta por caso, una cláusula
+  equivalente cuenta como fallo; la comparación con `3-large` está pendiente.
 - **Cuándo se revisaría:** D1, si la comparación con `3-large` o la ingesta de
   PDF lo piden; D4, antes de la tabla de auditoría (ADR-005); D5 y D6, con la
   ingesta de PDF; D7b, en el Bloque 7; D7, cuando la 3.13 se acerque al fin de
