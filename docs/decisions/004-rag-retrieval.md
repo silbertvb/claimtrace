@@ -72,8 +72,28 @@ obligatoria, no una preferencia de orden: `HOG-7.1`/`AUTO-7.1` y
   carpeta propia, una tabla en la base que registra cuáles se aplicaron y un
   ejecutor pequeño con `psycopg` (ya presente) que aplica las pendientes sin
   repetir ninguna. `services/db/init/` conserva solo la activación de la
-  extensión. Dónde vive la carpeta y cuándo se ejecuta se decide al llegar al
-  paso del esquema.
+  extensión.
+  - **Concretado el 28 oct:**
+    - **Carpeta:** `services/api/migrations/`. Entra en la imagen con el
+      `COPY . .` existente, sin cambios en el compose ni en el Dockerfile. Se
+      descartaron `services/db/migrations/` con volumen (depende de permisos del
+      montaje) y con contexto de build en la raíz (cambia todo el Dockerfile).
+    - **Ejecución:** al arrancar la API, mediante `lifespan` de FastAPI. El
+      ejecutor es una función independiente que también se puede lanzar con
+      `python -m`, de modo que en el Bloque 7 (rol mínimo) solo hay que mover la
+      llamada. Si una migración falla, la API no arranca. Se descartaron el
+      servicio `migrate` aparte (es lo que D4 aplazó), el comando manual (la
+      Fase 0 exige que `docker compose up` deje el esquema listo) y el script de
+      entrada (cambia el `CMD` y depende de los finales de línea).
+    - **Concurrencia:** bloqueo de sesión (`pg_advisory_lock`) con clave fija.
+      Hoy hay una sola instancia, así que es una precaución, no una protección
+      necesaria.
+    - **Registro:** el ejecutor crea la tabla con `CREATE TABLE IF NOT EXISTS`;
+      columnas `version` (clave primaria), `nombre`, `checksum` y `aplicada_en`.
+      El checksum se calcula sobre los bytes del archivo tal cual y hace fallar
+      el arranque si se edita una migración ya aplicada. Cada migración se
+      aplica en una transacción junto con su fila de registro. Es la única tabla
+      creada así; el esquema de negocio va siempre en migraciones.
 - **Descartadas:** scripts en `init/` recreando el volumen (cada cambio
   borraría datos, inaceptable cuando haya registro de auditoría),
   `CREATE TABLE IF NOT EXISTS` al arrancar (no sabe modificar ni deja
