@@ -3,28 +3,12 @@
 Solo expone /health para comprobar que el servicio arranca y llega a la base.
 La lógica de negocio (RAG, triage, LangGraph) se añade en bloques posteriores.
 """
-import os
 
-import psycopg
 from fastapi import FastAPI, HTTPException
 
+from app.core.db import _conectar
+
 app = FastAPI(title="ClaimTrace API")
-
-
-def _conectar() -> psycopg.Connection:
-    """Abre una conexión a Postgres con las variables de entorno.
-
-    Devuelve:
-        Conexión abierta. Quien la llama debe cerrarla.
-    """
-    return psycopg.connect(
-        host=os.environ["POSTGRES_HOST"],
-        port=os.environ["POSTGRES_PORT"],
-        user=os.environ["POSTGRES_USER"],
-        password=os.environ["POSTGRES_PASSWORD"],
-        dbname=os.environ["POSTGRES_DB"],
-        connect_timeout=3,
-    )
 
 
 # PRIMER ENDPOINT DE CLAIMTRACE (Bloque 2/12).
