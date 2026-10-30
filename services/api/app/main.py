@@ -3,12 +3,20 @@
 Solo expone /health para comprobar que el servicio arranca y llega a la base.
 La lógica de negocio (RAG, triage, LangGraph) se añade en bloques posteriores.
 """
+from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, HTTPException
 
 from app.core.db import _conectar
+from app.core.migrations import aplicar_migraciones
 
-app = FastAPI(title="ClaimTrace API")
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Aplica las migraciones al arrancar; si una falla, la API no arranca."""
+    aplicar_migraciones()
+    yield
+
+app = FastAPI(title="ClaimTrace API", lifespan=lifespan)
 
 
 # PRIMER ENDPOINT DE CLAIMTRACE (Bloque 2/12).

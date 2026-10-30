@@ -4,8 +4,13 @@ import os
 import psycopg
 
 
-def _conectar() -> psycopg.Connection:
+def _conectar(autocommit: bool = False) -> psycopg.Connection:
     """Abre una conexión a Postgres con las variables de entorno.
+
+    Parámetros:
+        autocommit: si es True, cada sentencia se confirma sola y las
+        transacciones solo existen dentro de `conn.transaction()`.
+        Por defecto False, que es el comportamiento que usa /health.
 
     Devuelve:
         Conexión abierta. Quien la llama debe cerrarla.
@@ -17,4 +22,5 @@ def _conectar() -> psycopg.Connection:
         password=os.environ["POSTGRES_PASSWORD"],
         dbname=os.environ["POSTGRES_DB"],
         connect_timeout=3,
+        autocommit=autocommit,
     )
