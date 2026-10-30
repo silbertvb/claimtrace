@@ -2,6 +2,25 @@
 Todos los cambios relevantes de ClaimTrace. Una entrada por día de trabajo.
 (La entrada más reciente va arriba.)
 
+## 2026-10-29 · Bloque 4: migración 001 y ejecutor
+
+### Añadido
+- `app/core/migrations.py`: ejecutor de migraciones SQL, lanzable con `python -m app.core.migrations` y enganchado al arranque de la API mediante `lifespan`. Aplica las pendientes en orden, cada una en su transacción junto con su fila de registro, con bloqueo de sesión (`pg_advisory_lock`, clave 40001) y checksum SHA-256 con saltos de línea normalizados a LF (`c2ed762`).
+- `services/api/migrations/001-clausulas.sql`: tabla `clausulas`, con todas las columnas `NOT NULL` y `embedding vector(1536)`.
+- Tabla de registro `migrations`, creada por el ejecutor.
+
+### Cambiado
+- `_conectar()` acepta el parámetro `autocommit` (por defecto `False`, así que `/health` no cambia) y `main.py` aplica las migraciones al arrancar.
+
+### Verificado
+- Con la base real: el bloqueo se libera al cerrar la conexión; un `.sql` con varias sentencias se ejecuta sin parámetros dentro de una transacción; un `COMMIT` dentro del `.sql` rompe la atomicidad (de ahí la regla de no incluirlo).
+- Dos arranques y dos ejecuciones con `python -m` no repiten la `001`; una migración ya aplicada y editada lanza `ErrorMigracion`; un nombre inválido falla antes de tocar la base; CRLF y LF dan el mismo checksum (comprobado el 30 oct).
+- Esquema real: 10 columnas, `embedding` de tipo `vector(1536)`, `clausulas` vacía hasta que exista el indexador.
+
+### Decisiones
+- Ver [ADR-004](docs/decisions/004-rag-retrieval.md), D3. La frase del checksum («bytes tal cual») queda desfasada a propósito: el checksum se calcula sobre el contenido normalizado a LF.
+- Pendiente para `pytest` (Bloque 10): varias sentencias por archivo con el ejecutor real.
+
 ## 2026-10-28 · Bloque 4: migraciones y esquema
 
 ### Añadido
@@ -9,7 +28,7 @@ Todos los cambios relevantes de ClaimTrace. Una entrada por día de trabajo.
 
 ### Cambiado
 - Entradas del 25 al 27 oct que faltaban en este archivo (`cd221e8`).
-- ADR-004: migraciones concretadas en D3 (`2c14f61`); esquema de `clausulas`, versión de pgvector (0.8.6) y confirmación de `app/core/` (`<HASH>`).
+- ADR-004: migraciones concretadas en D3 (`2c14f61`); esquema de `clausulas`, versión de pgvector (0.8.6) y confirmación de `app/core/` (`43696e8`).
 
 ### Decisiones
 - Ver [ADR-004](docs/decisions/004-rag-retrieval.md), D3 y D5.
