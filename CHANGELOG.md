@@ -2,6 +2,27 @@
 Todos los cambios relevantes de ClaimTrace. Una entrada por día de trabajo.
 (La entrada más reciente va arriba.)
 
+## 2026-10-30 · Bloque 4: acceso a datos y clave de OpenAI
+
+### Añadido
+- La API monta `data/` en solo lectura (`./data:/data:ro`) y recibe `DATA_DIR=/data` (`934d3b6`).
+- La API recibe `LLM_API_KEY` desde `.env`; el compose exige que esté definida (`2840377`).
+
+### Cambiado
+- ADR-004, D3: apartado «Concretado el 29-30 oct» con las decisiones del ejecutor de migraciones (`01afa4b`).
+- Comentario de `LLM_API_KEY` en `.env.example` (`2840377`).
+
+### Verificado
+- Con `autocommit=False`, tras `pg_advisory_lock` la conexión sigue en transacción (`INTRANS`) al salir de `transaction()`; con `autocommit=True` vuelve a `IDLE`.
+- CRLF y LF dan el mismo checksum.
+- Con `python -m app.core.migrations`, dos ejecuciones seguidas no repiten nada.
+- Una migración ya aplicada y editada lanza `ErrorMigracion`; un nombre inválido falla antes de tocar la base.
+- `appuser` lee `/data` y el montaje es de solo lectura.
+- `/health` responde `ok` con el montaje de `data/` activo.
+
+### Decisiones
+- Ver [ADR-004](docs/decisions/004-rag-retrieval.md), D3.
+
 ## 2026-10-29 · Bloque 4: migración 001 y ejecutor
 
 ### Añadido
@@ -14,12 +35,12 @@ Todos los cambios relevantes de ClaimTrace. Una entrada por día de trabajo.
 
 ### Verificado
 - Con la base real: el bloqueo se libera al cerrar la conexión; un `.sql` con varias sentencias se ejecuta sin parámetros dentro de una transacción; un `COMMIT` dentro del `.sql` rompe la atomicidad (de ahí la regla de no incluirlo).
-- Dos arranques y dos ejecuciones con `python -m` no repiten la `001`; una migración ya aplicada y editada lanza `ErrorMigracion`; un nombre inválido falla antes de tocar la base; CRLF y LF dan el mismo checksum (comprobado el 30 oct).
+- Dos arranques seguidos (el segundo, tras reiniciar la API) no repiten la `001`.
 - Esquema real: 10 columnas, `embedding` de tipo `vector(1536)`, `clausulas` vacía hasta que exista el indexador.
 
 ### Decisiones
 - Ver [ADR-004](docs/decisions/004-rag-retrieval.md), D3. La frase del checksum («bytes tal cual») queda desfasada a propósito: el checksum se calcula sobre el contenido normalizado a LF.
-- Pendiente para `pytest` (Bloque 10): varias sentencias por archivo con el ejecutor real.
+- Pendiente para las pruebas con falsos del Bloque 4: varias sentencias por archivo con el ejecutor real.
 
 ## 2026-10-28 · Bloque 4: migraciones y esquema
 
