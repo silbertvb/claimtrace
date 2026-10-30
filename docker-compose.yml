@@ -40,6 +40,8 @@ services:
       POSTGRES_DB: ${POSTGRES_DB}
       # Ruta interna donde se monta data/ (solo lectura). No es un secreto.
       DATA_DIR: /data
+      # Clave de OpenAI (embeddings). Nombre genérico porque hoy solo se usa 1 proveedor.
+      LLM_API_KEY: "${LLM_API_KEY:?define LLM_API_KEY en .env}"
     volumes:
       # Datos del dominio (clausulas.json...) en solo lectura.
       - ./data:/data:ro
