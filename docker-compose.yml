@@ -38,6 +38,11 @@ services:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: "${POSTGRES_PASSWORD:?define POSTGRES_PASSWORD en .env}"
       POSTGRES_DB: ${POSTGRES_DB}
+      # Ruta interna donde se monta data/ (solo lectura). No es un secreto.
+      DATA_DIR: /data
+    volumes:
+      # Datos del dominio (clausulas.json...) en solo lectura.
+      - ./data:/data:ro
     depends_on:
       db:
         # Espera a que el healthcheck de db diga "healthy" antes de arrancar.
