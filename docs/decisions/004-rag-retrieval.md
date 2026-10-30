@@ -113,6 +113,36 @@ obligatoria, no una preferencia de orden: `HOG-7.1`/`AUTO-7.1` y
         `001` solo crea `clausulas`.
       - **Filtro por ramo:** `metadatos->>'ramo' = ANY(...)`, sin índice (42
         filas).
+  - **Concretado el 29-30 oct:**
+    - **Conexión y transacciones:** el ejecutor abre su conexión con
+      `autocommit=True` y todo lo de cada migración (el `.sql` y su fila de
+      registro) va dentro de `conn.transaction()`. Con `autocommit=False`,
+      `pg_advisory_lock` deja la conexión en una transacción implícita y
+      `transaction()` no confirma nada al salir (comprobado el 30 oct: estado
+      `INTRANS` tras salir; con `autocommit=True`, `IDLE`). `_conectar()` acepta
+      el parámetro y su valor por defecto no cambia `/health`. Se descartaron dos
+      conexiones (más piezas), el bloqueo de transacción (contradice el de
+      sesión) y confirmar a mano (psycopg lo prohíbe dentro de `transaction()`).
+    - **Archivos `.sql`:** no llevan `BEGIN`, `COMMIT` ni `ROLLBACK`. Comprobado
+      el 29 oct: un `COMMIT` dentro del archivo confirma lo anterior y el
+      rollback posterior no lo deshace, rompiendo la atomicidad con el registro.
+      Nada lo impide automáticamente: una búsqueda ingenua rechazaría el `BEGIN`
+      de un bloque `DO $$`. La regla vive en el módulo del ejecutor. Varias
+      sentencias por archivo se ejecutan sin parámetros (protocolo simple),
+      comprobado el 29 oct; no contradice D4, que habla de consultas con datos.
+    - **Esquema:** todas las columnas de `clausulas` son `NOT NULL`: la fila nace
+      ya indexada y el indexador calcula el vector antes de insertar. Relajarlo
+      exigiría una migración `DROP NOT NULL`. `id` es `GENERATED ALWAYS`,
+      `indexada_en` no tiene `DEFAULT` (la escribe el indexador) y
+      `hash_contenido` no lleva `CHECK` de longitud.
+    - **Bloqueo:** clave `40001` (convención «bloque + número»); se libera al
+      cerrar la conexión (comprobado el 29 oct con dos conexiones).
+    - **Checksum:** se calcula sobre el contenido con `\r\n` normalizado a `\n`
+      (SHA-256), y sustituye a la frase «bytes del archivo tal cual» de
+      «Registro»; CRLF y LF dan el mismo checksum (comprobado el 30 oct).
+    - **Nombres y módulo:** tabla de registro `migrations` (`version` `text`,
+      p. ej. `'001'`; infraestructura técnica en inglés, dominio en español),
+      excepción `ErrorMigracion` y módulo `app/core/migrations.py`.
 - **Descartadas:** scripts en `init/` recreando el volumen (cada cambio
   borraría datos, inaceptable cuando haya registro de auditoría),
   `CREATE TABLE IF NOT EXISTS` al arrancar (no sabe modificar ni deja
