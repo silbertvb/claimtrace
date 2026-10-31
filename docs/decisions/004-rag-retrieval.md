@@ -198,6 +198,61 @@ obligatoria, no una preferencia de orden: `HOG-7.1`/`AUTO-7.1` y
 - **Estructura prevista:** puertos y adaptadores en `app/core/`; la carga y
   la traducción póliza → filtro en `app/seguros/`. Confirmada el 28 oct al
   crear el primer archivo, `app/core/db.py` (`585948d`, con `_conectar()`).
+- **Concretado el 31 oct:** interfaz y adaptador de embeddings. El SDK de
+  OpenAI y su versión ya constan en D6 y D7b.
+  - **Módulos:** el puerto `EmbeddingProvider` y la excepción
+    `ErrorEmbeddings` van en `app/core/embeddings.py`, que no importa ningún
+    proveedor; el adaptador de OpenAI va en `app/core/openai_embeddings.py`.
+    El indexador, `/retrieve` y los falsos de las pruebas dependen solo del
+    puerto, y un proveedor nuevo es un archivo nuevo. Se descartaron un único
+    módulo (el puerto importaría el SDK) y un paquete con `base.py` (estructura
+    prematura con un solo adaptador). Las tres opciones cumplían el ADR-003,
+    que separa dominio de infraestructura y no las distingue.
+  - **Tipo de puerto:** clase base abstracta (`ABC`) con `modelo`,
+    `dimensiones` y `embed` abstractos. Un adaptador o un falso incompleto
+    falla al crearse con `TypeError`, sin herramientas adicionales: no consta
+    un verificador de tipos que haga cumplir un `Protocol`. Se descartó el
+    `Protocol` (menos acoplamiento, pero sin esa comprobación).
+  - **Firma:** `embed(textos)` recibe una lista y devuelve una lista de
+    vectores en el mismo orden, en una sola petición por lote. El indexador
+    embebe las 42 cláusulas de una vez y una consulta se pasa como lista de
+    uno. Así una fallo deja la base como estaba, en lugar de a medias. Se
+    descartaron un texto por llamada (42 peticiones y riesgo de fallo parcial)
+    y dos métodos (dos caminos que pueden divergir).
+  - **Comprobaciones del adaptador:** no se confía en el orden de llegada.
+    Exige tantos vectores como textos, índices exactamente 0…n-1, coloca cada
+    vector por su `index` y verifica que mide `dimensiones`; rechaza una lista
+    vacía o un texto vacío antes de llamar. Comprobado el 31 oct: el SDK 3.42.0
+    devuelve `index` por elemento y no reordena, y con la clave real dos listas
+    con los mismos textos en orden inverso dan vectores cruzados con similitud
+    1,0. Límites de la API según el SDK: 2.048 textos por petición (lectura del
+    docstring), 8.192 tokens por texto y 300.000 por petición; no afectan a 42
+    cláusulas, pero la ingesta de PDF podría exigir trocear en lotes.
+  - **Modelo y dimensiones:** atributos fijos del proveedor, los que se piden,
+    y el indexador los registra por fila (D1). No se toma como fuente el
+    `model` de la respuesta (el 31 oct repitió el nombre exacto, una sola
+    observación); la comprobación de dimensiones por vector cubre un desajuste
+    entre lo pedido y lo recibido. Se descartó devolverlos con cada respuesta
+    (complica el retorno).
+  - **Clave:** el adaptador lee `LLM_API_KEY` del entorno al crearse, como
+    `db.py`, y falla con `ErrorEmbeddings` si falta o está vacía; se pasa de
+    forma explícita al cliente. Se descartó recibirla en el constructor (la
+    clave viajaría por más código). El `:?` del compose no protege fuera de
+    Docker.
+  - **Errores:** `ErrorEmbeddings`, definida en el puerto, cubre las
+    validaciones y los errores del SDK (`OpenAIError`), envueltos con un
+    mensaje propio y la causa original encadenada. Quien llama captura un solo
+    tipo sin importar `openai`. Se descartaron dejar pasar las excepciones del
+    SDK (los llamadores conocerían al proveedor) y no tener excepción propia
+    (se confundiría con otros errores). Precedente: `ErrorMigracion` (D3).
+  - **Tiempo de espera y reintentos:** constantes explícitas en el adaptador,
+    30 s y 2 reintentos, en lugar de los valores del SDK (600 s y 2
+    reintentos, que dejan una llamada colgada hasta unos 30 minutos). Son
+    valores de partida, sin medición, y se ajustarán al medir con el servicio
+    real. Se descartaron las variables de entorno (no quedan versionadas, el
+    mismo criterio de D8b). Sin comprobar aún: fallos reales de red o de clave
+    y el efecto del tiempo de espera; esos caminos solo se probaron con un
+    cliente simulado fuera del repositorio.
 
 ### D6. LangChain
 - **Decisión:** el Bloque 4 no usa LangChain: `psycopg` y el SDK de OpenAI
