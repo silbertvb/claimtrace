@@ -2,6 +2,23 @@
 Todos los cambios relevantes de ClaimTrace. Una entrada por día de trabajo.
 (La entrada más reciente va arriba.)
 
+## 2026-10-31 · Bloque 4: puerto de embeddings y adaptador de OpenAI
+
+### Añadido
+- `app/core/embeddings.py`: puerto `EmbeddingProvider` (clase base abstracta con `modelo`, `dimensiones` y `embed(textos)`) y excepción `ErrorEmbeddings` (`a5abfda`).
+- `app/core/openai_embeddings.py`: adaptador de OpenAI. Lee `LLM_API_KEY` del entorno, usa un tiempo de espera de 30 s y 2 reintentos, y valida la respuesta (número de vectores, `index` y dimensiones), colocando cada vector por su `index` (`a5abfda`).
+- Dependencia `openai==3.42.0` en `requirements.txt` (`a5abfda`).
+
+### Cambiado
+- ADR-004, D7b: nota «Concretado el 31 oct» con la dependencia de `openai` (`cc507d5`).
+
+### Verificado
+- Con la clave real, el permiso restringido (solo Embeddings) basta: el modelo devuelto es `text-embedding-3-small` y el vector mide 1536 dimensiones.
+- Con dos listas con los mismos textos en orden inverso, los vectores salen cruzados con similitud 1.0 (a 4 decimales); dos textos distintos dan 0.3156.
+
+### Decisiones
+- Ver [ADR-004](docs/decisions/004-rag-retrieval.md), D6 y D7b.
+
 ## 2026-10-30 · Bloque 4: acceso a datos y clave de OpenAI
 
 ### Añadido
