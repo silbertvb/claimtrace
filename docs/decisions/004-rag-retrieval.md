@@ -240,6 +240,12 @@ obligatoria, no una preferencia de orden: `HOG-7.1`/`AUTO-7.1` y
   exacto también retrasa los parches de seguridad hasta que se actualice a
   mano. Revisión en el Bloque 7 con un archivo de bloqueo multiplataforma con
   hashes.
+- **Concretado el 31 oct:** se añade `openai==3.42.0` a las dependencias
+  directas, para el adaptador de embeddings (D6: SDK de OpenAI directo,
+  detrás de los puertos de D5). Es la última versión publicada en PyPI el
+  31 oct y requiere Python 3.10 o superior. Sus dependencias (`httpx2`,
+  `anyio`, `jiter`, `pydantic`, `sniffio`, `typing-extensions`) son
+  indirectas y no se fijan, según el límite de este apartado.
 
 ### D8. Abstención y umbral
 - **Alcance:** en el Bloque 4, abstenerse solo significa «no hay evidencia
