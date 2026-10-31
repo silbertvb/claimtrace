@@ -3,3 +3,4 @@
 fastapi==0.143.3
 uvicorn[standard]==0.54.0
 psycopg[binary]==3.3.6
+openai==3.42.0
