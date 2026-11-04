@@ -9,8 +9,8 @@ Reglas por objeto (en Clausula.__post_init__):
 Reglas entre objetos (en cargar_clausulas):
     - clause_id no se repite;
     - titulo y texto no se repiten, salvo entre ramos especificos distintos.
-Si alguna regla falla no se devuelve nada: el error lista todos los
-problemas encontrados.
+Si alguna regla falla no se devuelve nada: el error lista un problema por
+elemento invalido y los de las reglas entre objetos.
 """
 import json
 from dataclasses import dataclass
@@ -133,7 +133,8 @@ def cargar_clausulas(directorio: Path) -> list[Clausula]:
 
     Lanza:
         ErrorClausulas: si el archivo no se puede leer o incumple alguna
-        regla; en ese caso el mensaje lista todos los problemas.
+        regla; en ese caso el mensaje lista los problemas (uno por elemento
+        invalido, mas los de las reglas entre objetos).
     """
     ruta = directorio / NOMBRE_ARCHIVO
     try:
