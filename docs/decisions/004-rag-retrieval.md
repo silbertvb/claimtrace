@@ -274,6 +274,26 @@ obligatoria, no una preferencia de orden: `HOG-7.1`/`AUTO-7.1` y
     Un elemento inválido queda fuera de las reglas entre objetos, así que sus
     problemas aparecen al corregir el anterior. Una lista vacía es un error:
     un corpus vacío haría que el sistema se abstuviera siempre sin avisar.
+  - **`DATA_DIR`:** el cargador recibe la carpeta como parámetro obligatorio y
+    no lee el entorno; quien lo llama lee `os.environ["DATA_DIR"]` sin valor
+    por defecto, como `db.py` con sus variables. Así las pruebas usan carpetas
+    temporales sin tocar el entorno. Se descartaron que la función lea el
+    entorno y un valor por defecto, que puede cargar en silencio un archivo
+    distinto del desplegado, contra la razón de D7b (lo medido tiene que ser
+    lo desplegado). Qué pieza lo lee se decide con el indexador.
+  - **Identificador:** `Clausula` conserva `clause_id`, el nombre del JSON, y
+    la traducción a `source_id` (el `clause_id` completo, D3) se hace al
+    cruzar hacia el núcleo, donde se documentará. Como con las etiquetas, los
+    JSON no se renombran y `core/` no conoce nombres del dominio (ADR-003). Se
+    descartaron usar `source_id` en la clase (el dominio adoptaría un nombre
+    del núcleo y los errores citarían un campo que el archivo no tiene) y
+    tener ambos nombres sobre el mismo dato.
+  - **Excepción:** solo mensaje de texto, sin atributo con la lista de
+    problemas, porque hoy ningún consumidor la necesita; pasar a un atributo
+    `problemas` más adelante es sencillo. Se descartaron una excepción
+    genérica de carga (`ErrorCarga`, una pieza antes de necesitarla) y
+    `ValueError` (se confundiría con otros errores, como en D5 para
+    embeddings).
   - **Límite:** el cargador no comprueba el número de cláusulas (42), un dato
     del corpus que cambiaría con la ingesta de PDF. Se cubrirá fuera de él: la
     bitácora `indexaciones` (D3) registrará el recuento y el hash del corpus en
