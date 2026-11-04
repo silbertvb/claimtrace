@@ -91,8 +91,10 @@ Fijadas entre el 9 y el 24 oct 2026 (el detalle de cada una está en el ADR o en
 - **Idioma de los nombres.** Código y archivos de infraestructura, en inglés
   (`app/core/`, `docker-compose.yml`). La capa de seguros y los datos del
   dominio, en español (`app/seguros/`, `clausulas.json`). Los scripts de
-  `scripts/` llevan nombre en español (`generar_datos.py`). Los documentos y
-  los comentarios están en español; los mensajes de commit, en inglés.
+  `scripts/` y las herramientas de `evaluation/` llevan nombre en español
+  (`generar_datos.py`, `particionar.py`), igual que sus archivos de datos
+  (`particion.json`). Aclarado el 4 nov 2026. Los documentos y los
+  comentarios están en español; los mensajes de commit, en inglés.
 - **Una sola versión de Python (ADR-004).** La de referencia es la del
   `Dockerfile` (hoy 3.13). El `.venv` local usa la misma versión menor; el
   parche puede diferir. Si cambia una, cambia la otra en el mismo commit.

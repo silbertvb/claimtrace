@@ -11,6 +11,7 @@ Todos los cambios relevantes de ClaimTrace. Una entrada por día de trabajo.
 
 ### Cambiado
 - ADR-004, D3 y D5: nota «Concretado el 4 nov» con las decisiones del cargador.
+- `docs/architecture.md`, «Idioma de los nombres»: las herramientas de `evaluation/` también llevan nombre en español; sin renombrados.
 
 ### Verificado
 - `pycodestyle` sin avisos.
