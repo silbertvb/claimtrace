@@ -253,6 +253,37 @@ obligatoria, no una preferencia de orden: `HOG-7.1`/`AUTO-7.1` y
     mismo criterio de D8b). Sin comprobar aún: fallos reales de red o de clave
     y el efecto del tiempo de espera; esos caminos solo se probaron con un
     cliente simulado fuera del repositorio.
+- **Concretado el 4 nov:** carga de `data/clausulas.json` (`b7ebe81`), una
+  función normal de `seguros/`, como fija la decisión.
+  - **Módulo y nombres:** `app/seguros/clausulas.py` con la dataclass
+    `Clausula`, `cargar_clausulas(directorio)` y la excepción
+    `ErrorClausulas`. Quien llama captura un solo tipo, también si falla la
+    lectura o el JSON (causa original encadenada). Precedente:
+    `ErrorEmbeddings` y `ErrorMigracion`. `core/` no la importa (ADR-003).
+  - **`Clausula`:** dataclass inmutable (`frozen=True`) que valida sus cinco
+    campos al construirse. Lo que se valida es lo mismo que luego se hashea y
+    se indexa, y no debe poder cambiar entre una cosa y la otra.
+  - **Reglas:** el archivo es una lista con al menos un elemento; cada
+    elemento tiene exactamente los cinco campos, todos texto y no en blanco;
+    `clause_id` empieza por `VRG-`; `ramo` es `hogar`, `auto` o `comun`;
+    `clause_id` no se repite; y el contenido repetido sigue la regla de D3.
+    Del identificador solo se exige el prefijo, no el patrón completo: validarlo
+    entero sería frágil si el formato cambia.
+  - **Errores:** si alguna regla falla no se devuelve nada y el mensaje lista los
+    problemas: uno por elemento inválido, más los de las reglas entre elementos.
+    Un elemento inválido queda fuera de las reglas entre objetos, así que sus
+    problemas aparecen al corregir el anterior. Una lista vacía es un error:
+    un corpus vacío haría que el sistema se abstuviera siempre sin avisar.
+  - **Límite:** el cargador no comprueba el número de cláusulas (42), un dato
+    del corpus que cambiaría con la ingesta de PDF. Se cubrirá fuera de él: la
+    bitácora `indexaciones` (D3) registrará el recuento y el hash del corpus en
+    cada pasada, y una prueba con los datos reales comprobará que toda cláusula
+    esperada por una reclamación existe en el corpus. Detectan el cambio, no lo
+    impiden. Si el indexador debe detenerse ante un corpus distinto del anterior
+    se decide en el Paso 14.
+  - **Comprobado el 4 nov:** con los datos reales dentro del contenedor carga
+    sin errores, y una copia corrompida se rechaza con 4 problemas agregados.
+    Son comprobaciones manuales, sin pruebas automáticas todavía.
 
 ### D6. LangChain
 - **Decisión:** el Bloque 4 no usa LangChain: `psycopg` y el SDK de OpenAI

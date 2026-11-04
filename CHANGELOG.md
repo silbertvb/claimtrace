@@ -2,6 +2,27 @@
 Todos los cambios relevantes de ClaimTrace. Una entrada por día de trabajo.
 (La entrada más reciente va arriba.)
 
+## 2026-11-04 · Bloque 4: cargador de cláusulas
+
+### Añadido
+- `app/seguros/clausulas.py`: dataclass `Clausula` (inmutable, valida sus campos al construirse), `cargar_clausulas(directorio)` y excepción `ErrorClausulas`. Si algo falla no devuelve nada y el error lista los problemas (uno por elemento inválido, más los de las reglas entre elementos).
+- `Clausula.texto_indexable`: cadena que se embebe y se hashea, `titulo + "\n" + texto` (`b7ebe81`).
+- Paquete `app/seguros/` (`b7ebe81`).
+
+### Cambiado
+- ADR-004, D3 y D5: nota «Concretado el 4 nov» con las decisiones del cargador.
+
+### Verificado
+- `pycodestyle` sin avisos.
+- Con los datos reales dentro del contenedor, `clausulas.json` carga sin errores.
+- Con una copia corrompida, el cargador la rechaza y agrupa 4 problemas en un solo error.
+- Prueba local de `Clausula` con 9 comprobaciones: representación, cadena indexable, igualdad de cadena en el par hogar/auto, inmutabilidad y 5 rechazos (documento en blanco, `clause_id` nulo, prefijo, ramo y texto que no es texto).
+
+### Decisiones
+- Ver [ADR-004](docs/decisions/004-rag-retrieval.md), D3 y D5.
+- Se exige solo el prefijo `VRG-`, no el patrón completo del identificador.
+- El contenido idéntico solo se admite entre ramos específicos distintos; con `comun` o con el mismo ramo se rechaza.
+
 ## 2026-10-31 · Bloque 4: puerto de embeddings y adaptador de OpenAI
 
 ### Añadido
