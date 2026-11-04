@@ -216,7 +216,7 @@ obligatoria, no una preferencia de orden: `HOG-7.1`/`AUTO-7.1` y
   - **Firma:** `embed(textos)` recibe una lista y devuelve una lista de
     vectores en el mismo orden, en una sola petición por lote. El indexador
     embebe las 42 cláusulas de una vez y una consulta se pasa como lista de
-    uno. Así una fallo deja la base como estaba, en lugar de a medias. Se
+    uno. Así un fallo deja la base como estaba, en lugar de a medias. Se
     descartaron un texto por llamada (42 peticiones y riesgo de fallo parcial)
     y dos métodos (dos caminos que pueden divergir).
   - **Comprobaciones del adaptador:** no se confía en el orden de llegada.
